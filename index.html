@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>偶然と想像 | 2027 YEONJUN CALENDAR COLLECTION — TEASER</title>
 
-  <!-- Google Fonts: Japanese Indie Serif, Retro American Editorial Serif, Vintage Monospace, Korean Serif Fallback -->
+  <!-- Google Fonts: Japanese Cinema Serif, Arthouse English Serif, 35mm Metadata Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=IBM+Plex+Mono:wght@300;400;500&family=Noto+Serif+KR:wght@300;400&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=IBM+Plex+Mono:wght@300;400;500&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -18,15 +18,16 @@
       theme: {
         extend: {
           colors: {
+            'cinema-matte': '#070606',
             'film-charcoal': '#0E0D0C',
-            'film-espresso': '#171513',
+            'card-surface': '#151412',
             'cream-paper': '#F2ECE1',
-            'vintage-gold': '#C8A97E',
-            'faded-crimson': '#9E3B33',
-            'warm-muted': '#9A9185',
+            'aged-gold': '#C8A97E',
+            'muted-ash': '#857E73',
+            'deep-crimson': '#7A2632',
           },
           fontFamily: {
-            'jp-serif': ['"Shippori Mincho"', '"Noto Serif KR"', 'serif'],
+            'jp-serif': ['"Shippori Mincho"', 'serif'],
             'en-serif': ['"Cormorant Garamond"', 'Georgia', 'serif'],
             'mono-meta': ['"IBM Plex Mono"', 'monospace'],
           },
@@ -36,26 +37,25 @@
   </script>
 
   <style>
-    /* ==========================================================
-       RETRO AMERICAN + JAPANESE INDIE CINEMA DESIGN TOKENS
-       ========================================================== */
+    /* =========================================
+       WARM CHARCOAL & AGED GOLD CINEMA TOKENS
+       ========================================= */
     :root {
-      --bg-outer: #070606;
+      --bg-matte: #070606;
       --bg-charcoal: #0E0D0C;
-      --bg-espresso: #171513;
+      --bg-card: #151412;
       --ink-cream: #F2ECE1;
       --ink-gold: #C8A97E;
-      --ink-crimson: #9E3B33;
-      --ink-muted: #9A9185;
-      --hairline: rgba(242, 236, 225, 0.14);
+      --ink-ash: #857E73;
+      --tint-crimson: #7A2632;
+      --hairline: rgba(242, 236, 225, 0.13);
       --hairline-gold: rgba(200, 169, 126, 0.28);
-      --vellum-bg: rgba(242, 236, 225, 0.08);
       --ease-cinema: cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     html {
       scroll-behavior: smooth;
-      background-color: var(--bg-outer);
+      background-color: var(--bg-matte);
       color: var(--ink-cream);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -65,31 +65,31 @@
       margin: 0;
       padding: 0;
       overflow-x: hidden;
-      background-color: var(--bg-outer);
-      font-family: 'Shippori Mincho', 'Noto Serif KR', serif;
+      background-color: var(--bg-matte);
+      font-family: 'Shippori Mincho', serif;
     }
 
     ::selection {
-      background: rgba(200, 169, 126, 0.28);
+      background: rgba(200, 169, 126, 0.26);
       color: var(--ink-cream);
     }
 
-    /* Mobile-first 9:16 Cinema Frame (Centered max-width 430px on Desktop) */
+    /* Mobile-first 9:16 Stage Frame (max 440px centered on desktop) */
     .cinema-stage {
       position: relative;
       width: 100%;
-      max-width: 430px;
-      min-height: 100svh;
+      max-width: 440px;
+      min-height: 100dvh;
       margin: 0 auto;
       background-color: var(--bg-charcoal);
       overflow-x: hidden;
-      box-shadow: 0 0 90px rgba(0, 0, 0, 0.92);
+      box-shadow: 0 0 84px rgba(0, 0, 0, 0.92);
     }
 
-    @media (min-width: 431px) {
+    @media (min-width: 441px) {
       .cinema-stage {
-        border-left: 1px solid rgba(200, 169, 126, 0.12);
-        border-right: 1px solid rgba(200, 169, 126, 0.12);
+        border-left: 1px solid rgba(200, 169, 126, 0.1);
+        border-right: 1px solid rgba(200, 169, 126, 0.1);
       }
     }
 
@@ -100,17 +100,19 @@
       text-orientation: upright;
     }
 
+    /* Subtle Hairlines */
     .hairline-t { border-top: 1px solid var(--hairline); }
     .hairline-b { border-bottom: 1px solid var(--hairline); }
+    .hairline-all { border: 1px solid var(--hairline); }
     .tabular-nums { font-variant-numeric: tabular-nums; }
 
-    /* ==========================================================
-       HERO LIGHT-SWEEP SHIMMER & REVEAL ANIMATIONS
-       ========================================================== */
+    /* =========================================
+       CINEMATIC ANIMATIONS & TRANSITIONS
+       ========================================= */
     @keyframes focalReveal {
       0% {
         opacity: 0;
-        filter: blur(11px);
+        filter: blur(12px);
         transform: translateY(10px) scale(0.985);
       }
       100% {
@@ -121,14 +123,25 @@
     }
 
     @keyframes slowFadeUp {
-      0% { opacity: 0; transform: translateY(14px); }
-      100% { opacity: 1; transform: translateY(0); }
+      0% {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    @keyframes titleLightSweep {
-      0% { background-position: 0% -120%; }
-      50% { background-position: 0% 180%; }
-      100% { background-position: 0% 180%; }
+    @keyframes titleSheen {
+      0% { background-position: 0% -130%; }
+      48% { background-position: 0% 185%; }
+      100% { background-position: 0% 185%; }
+    }
+
+    @keyframes recPulse {
+      0%, 100% { opacity: 0.95; transform: scale(1); }
+      50% { opacity: 0.25; transform: scale(0.85); }
     }
 
     @keyframes scrollDrop {
@@ -140,20 +153,14 @@
 
     @keyframes shutterFlash {
       0% { opacity: 0; }
-      16% { opacity: 0.24; }
+      18% { opacity: 0.24; }
       100% { opacity: 0; }
-    }
-
-    @keyframes ekgPulse {
-      0% { stroke-dashoffset: 480; opacity: 0.25; }
-      50% { opacity: 0.72; }
-      100% { stroke-dashoffset: 0; opacity: 0.25; }
     }
 
     @keyframes receiptSlideOut {
       0% {
-        transform: translateY(-94%);
-        opacity: 0.35;
+        transform: translateY(-96%);
+        opacity: 0.25;
       }
       18% {
         opacity: 1;
@@ -165,40 +172,44 @@
     }
 
     .anim-focal {
-      animation: focalReveal 2.1s var(--ease-cinema) forwards;
+      animation: focalReveal 2.2s var(--ease-cinema) forwards;
     }
 
     .anim-fade-1 {
       opacity: 0;
-      animation: slowFadeUp 1.5s var(--ease-cinema) 0.35s forwards;
+      animation: slowFadeUp 1.6s var(--ease-cinema) 0.45s forwards;
     }
 
     .anim-fade-2 {
       opacity: 0;
-      animation: slowFadeUp 1.5s var(--ease-cinema) 0.75s forwards;
+      animation: slowFadeUp 1.6s var(--ease-cinema) 0.85s forwards;
     }
 
     .anim-fade-3 {
       opacity: 0;
-      animation: slowFadeUp 1.5s var(--ease-cinema) 1.1s forwards;
+      animation: slowFadeUp 1.6s var(--ease-cinema) 1.2s forwards;
     }
 
-    /* Subtle Vertical Light-Sweep across Hero Japanese Title */
-    .hero-title-shimmer {
+    /* Warm Cream-to-Aged-Gold Vertical Light Sheen on Hero Title */
+    .hero-title-sheen {
       background: linear-gradient(
         180deg,
         #F2ECE1 0%,
-        #F2ECE1 34%,
-        #FFF9EE 48%,
-        #C8A97E 56%,
+        #F2ECE1 35%,
+        #FFFBF2 49%,
+        #C8A97E 57%,
         #F2ECE1 70%,
         #F2ECE1 100%
       );
-      background-size: 100% 280%;
+      background-size: 100% 300%;
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      animation: titleLightSweep 8.5s ease-in-out infinite;
+      animation: titleSheen 9.5s ease-in-out infinite;
+    }
+
+    .rec-dot {
+      animation: recPulse 2.4s ease-in-out infinite;
     }
 
     .scroll-line-inner {
@@ -206,14 +217,14 @@
     }
 
     .shutter-flash-active {
-      animation: shutterFlash 0.38s var(--ease-cinema) forwards;
+      animation: shutterFlash 0.42s var(--ease-cinema) forwards;
     }
 
-    /* Scroll Reveal Observer */
+    /* Scroll Reveal Observer Classes */
     .reveal-section {
       opacity: 0;
       transform: translateY(22px);
-      transition: opacity 1.05s var(--ease-cinema), transform 1.05s var(--ease-cinema);
+      transition: opacity 1.1s var(--ease-cinema), transform 1.1s var(--ease-cinema);
     }
 
     .reveal-section.is-visible {
@@ -221,90 +232,28 @@
       transform: translateY(0);
     }
 
-    /* Tagline & Card Crossfades */
-    .fade-swap {
-      transition: opacity 0.34s var(--ease-cinema), filter 0.36s var(--ease-cinema), transform 0.36s var(--ease-cinema);
+    /* Scene Content Crossfade */
+    .scene-content-fade {
+      transition: opacity 0.32s var(--ease-cinema), filter 0.38s var(--ease-cinema), transform 0.38s var(--ease-cinema);
     }
 
-    .fade-swap.is-switching {
+    .scene-content-fade.is-switching {
       opacity: 0;
-      filter: blur(4px);
+      filter: blur(5px);
       transform: translateY(4px);
     }
 
-    /* 35mm Vintage Frame Crop Marks */
+    /* 35mm Viewfinder Corner Crop Marks (Aged Gold) */
     .crop-mark {
       position: absolute;
-      width: 11px;
-      height: 11px;
+      width: 12px;
+      height: 12px;
       pointer-events: none;
-      border-color: rgba(200, 169, 126, 0.45);
+      border-color: rgba(200, 169, 126, 0.48);
     }
 
-    /* ==========================================================
-       VELLUM / TRACING PAPER OVERLAY INSIDE MONTHLY CARD
-       ========================================================== */
-    .vellum-sheet {
-      background: linear-gradient(
-        155deg,
-        rgba(242, 236, 225, 0.13) 0%,
-        rgba(242, 236, 225, 0.06) 52%,
-        rgba(200, 169, 126, 0.09) 100%
-      );
-      backdrop-filter: blur(15px) saturate(110%);
-      -webkit-backdrop-filter: blur(15px) saturate(110%);
-      border-top: 1px solid rgba(242, 236, 225, 0.28);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 -14px 40px rgba(0, 0, 0, 0.45);
-      transform: translateY(102%);
-      opacity: 0;
-      pointer-events: none;
-      transition: transform 0.62s var(--ease-cinema), opacity 0.45s ease;
-    }
-
-    .vellum-sheet.is-open {
-      transform: translateY(0%);
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    /* May Ghost Girl EKG Pulse Line */
-    .ekg-path {
-      stroke-dasharray: 480;
-      stroke-dashoffset: 480;
-      animation: ekgPulse 4.6s linear infinite;
-    }
-
-    /* ==========================================================
-       ACCORDION MANIFEST ANIMATION
-       ========================================================== */
-    .archive-panel {
-      display: grid;
-      grid-template-rows: 0fr;
-      opacity: 0;
-      transition: grid-template-rows 0.48s var(--ease-cinema), opacity 0.42s ease;
-    }
-
-    .archive-item[data-open="true"] .archive-panel {
-      grid-template-rows: 1fr;
-      opacity: 1;
-    }
-
-    .archive-panel-inner {
-      overflow: hidden;
-    }
-
-    .archive-plus {
-      transition: transform 0.4s var(--ease-cinema);
-    }
-
-    .archive-item[data-open="true"] .archive-plus {
-      transform: rotate(45deg);
-    }
-
-    /* ==========================================================
-       RETRO THERMAL COINCIDENCE RECEIPT
-       ========================================================== */
-    .receipt-printer-viewport {
+    /* Vintage Cream Thermal Receipt Slip (from Version 2) */
+    .receipt-viewport {
       overflow: hidden;
       position: relative;
     }
@@ -312,129 +261,129 @@
     .receipt-paper {
       background-color: #F2ECE1;
       background-image:
-        radial-gradient(rgba(23, 21, 19, 0.035) 1px, transparent 0),
-        linear-gradient(180deg, rgba(200, 169, 126, 0.12) 0%, rgba(242, 236, 225, 0) 14%, rgba(242, 236, 225, 0) 86%, rgba(200, 169, 126, 0.14) 100%);
-      background-size: 16px 16px, 100% 100%;
-      color: #171513;
-      box-shadow: 0 22px 48px rgba(0, 0, 0, 0.65);
+        radial-gradient(rgba(14, 13, 12, 0.03) 1px, transparent 0),
+        linear-gradient(180deg, rgba(200, 169, 126, 0.14) 0%, rgba(242, 236, 225, 0) 14%, rgba(242, 236, 225, 0) 86%, rgba(200, 169, 126, 0.12) 100%);
+      background-size: 14px 14px, 100% 100%;
+      color: #151412;
+      box-shadow: 0 20px 44px rgba(0, 0, 0, 0.6);
     }
 
     .receipt-printing {
-      animation: receiptSlideOut 1.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation: receiptSlideOut 1.05s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
-    .receipt-divider {
-      border-top: 1px dashed rgba(23, 21, 19, 0.34);
+    .receipt-rule {
+      border-top: 1px dashed rgba(21, 20, 18, 0.3);
     }
 
-    /* Vignette & Warm Darkroom Framing */
+    /* Subtle Darkroom Vignette */
     .vignette-layer {
-      background: radial-gradient(ellipse at center, transparent 40%, rgba(8, 7, 6, 0.78) 100%);
+      background: radial-gradient(ellipse at center, transparent 42%, rgba(7, 6, 6, 0.78) 100%);
     }
 
-    /* Hide scrollbar cleanly */
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
 
 <body>
-  <!-- ==========================================================
-       MOBILE-FIRST 9:16 CINEMA STAGE (MAX 430PX ON DESKTOP)
-       ========================================================== -->
+  <!-- =========================================
+       MOBILE-FIRST 9:16 CINEMA STAGE
+       ========================================= -->
   <div id="cinemaStage" class="cinema-stage">
 
-    <!-- Fixed Atmospheric Canvas Background & Faint Frame Crop Marks -->
+    <!-- Fixed Background Ambient Light Canvas ("Door Wide Open" warm sliver + moody leaks) -->
     <div class="fixed inset-0 pointer-events-none z-0 flex justify-center">
-      <div class="relative w-full max-w-[430px] h-full overflow-hidden">
-        <!-- Warm "Door Wide Open" light sliver + drifting darkroom halos -->
+      <div class="relative w-full max-w-[440px] h-full overflow-hidden">
         <canvas id="lightCanvas" class="w-full h-full block"></canvas>
-        <!-- Animated 35mm Film Grain -->
-        <canvas id="grainCanvas" class="absolute inset-0 w-full h-full block opacity-[0.065] mix-blend-screen"></canvas>
-        <!-- Vignette -->
+        <!-- Subtle Animated 35mm Film Grain Canvas -->
+        <canvas id="grainCanvas" class="absolute inset-0 w-full h-full block opacity-[0.06] mix-blend-screen"></canvas>
+        <!-- Cinema Vignette -->
         <div class="absolute inset-0 vignette-layer"></div>
-        <!-- Faint Fixed Viewport Vintage Film Crop Marks -->
-        <span class="crop-mark top-12 left-3.5 border-t border-l opacity-45"></span>
-        <span class="crop-mark top-12 right-3.5 border-t border-r opacity-45"></span>
-        <span class="crop-mark bottom-4 left-3.5 border-b border-l opacity-45"></span>
-        <span class="crop-mark bottom-4 right-3.5 border-b border-r opacity-45"></span>
       </div>
     </div>
 
-    <!-- ==========================================================
-         TOP STICKY MICRO-HEADER
-         ========================================================== -->
-    <header class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] z-40 px-4 py-3 flex items-center justify-between bg-gradient-to-b from-[#0E0D0C]/90 via-[#0E0D0C]/55 to-transparent backdrop-blur-[4px] border-b border-cream-paper/[0.06]">
-      <div class="font-mono-meta text-[9.5px] tracking-[0.18em] text-vintage-gold/90 select-none">
-        NO. 1999.09.13
-      </div>
-
-      <div class="font-mono-meta text-[10px] tracking-[0.22em] text-cream-paper/85 select-none">
-        2026.12.11
+    <!-- =========================================
+         0. TOP FIXED MINIMAL STATUS BAR
+         ========================================= -->
+    <header class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-[440px] z-40 px-5 py-3.5 flex items-center justify-between bg-gradient-to-b from-[#0E0D0C]/92 via-[#0E0D0C]/55 to-transparent backdrop-blur-[2px]">
+      <div class="flex items-center gap-2 font-mono-meta text-[10px] tracking-[0.22em] text-cream-paper/85 select-none">
+        <span>REC</span>
+        <span class="rec-dot inline-block w-1.5 h-1.5 rounded-full bg-[#B94A48]"></span>
+        <span class="text-aged-gold/85">2027.YJ</span>
       </div>
 
       <button
         id="soundToggleBtn"
         type="button"
-        aria-label="Toggle film shutter and chime sound"
-        class="font-mono-meta text-[9.5px] tracking-[0.16em] text-warm-muted hover:text-cream-paper transition-colors py-1 px-2 rounded-[2px] border border-cream-paper/15 hover:border-vintage-gold/50 active:scale-95"
+        aria-label="Toggle 35mm shutter sound"
+        class="font-mono-meta text-[10px] tracking-[0.2em] text-muted-ash hover:text-cream-paper transition-colors py-1.5 px-2.5 rounded-sm border border-cream-paper/15 hover:border-aged-gold/50 active:scale-95"
       >
-        SOUND: <span id="soundStateLabel" class="text-cream-paper">OFF</span>
+        SOUND: <span id="soundStateLabel" class="text-cream-paper/90">OFF</span>
       </button>
     </header>
 
-    <!-- ==========================================================
-         MAIN CONTENT FLOW
-         ========================================================== -->
+    <!-- =========================================
+         MAIN CONTENT LAYER
+         ========================================= -->
     <main class="relative z-10">
 
-      <!-- ========================================================
-           SECTION 1: HERO DYNAMIC FILM POSTER (100SVH)
-           ======================================================== -->
-      <section id="hero" class="relative min-h-[100svh] flex flex-col justify-between px-6 pt-16 pb-7">
+      <!-- =======================================
+           SECTION 1: FULL-VIEWPORT DYNAMIC POSTER HERO
+           ======================================= -->
+      <section id="hero" class="relative min-h-[100dvh] flex flex-col justify-between px-6 pt-16 pb-8">
 
-        <!-- Subtle Top Editorial Label -->
-        <div class="anim-fade-1 pt-2 pb-3 hairline-b text-center">
-          <p class="font-mono-meta text-[9px] tracking-[0.24em] text-vintage-gold/90 uppercase">
-            FEATURING CHOI YEONJUN <span class="text-cream-paper/30 mx-1">&middot;</span>
-            <span class="text-cream-paper/85">2027 YEONJUN CALENDAR COLLECTION</span>
-          </p>
+        <!-- Top Poster Metadata Row -->
+        <div class="anim-fade-1 flex items-center justify-between pt-3 pb-3 hairline-b">
+          <div class="flex flex-col">
+            <span class="font-mono-meta text-[9px] tracking-[0.26em] text-aged-gold/85 uppercase">Starring</span>
+            <span class="font-mono-meta text-[11px] tracking-[0.22em] text-cream-paper mt-0.5">
+              YEONJUN <span class="text-aged-gold/45">/</span> <span class="font-jp-serif tracking-[0.18em]">ヨンジュン</span>
+            </span>
+          </div>
+          <div class="text-right">
+            <span class="font-mono-meta text-[9px] tracking-[0.24em] text-muted-ash block">EDITION</span>
+            <span class="font-mono-meta text-[11px] tracking-[0.26em] text-aged-gold mt-0.5 block">NO. 0913</span>
+          </div>
         </div>
 
-        <!-- Centerpiece Poster Composition -->
-        <div class="flex-1 flex flex-col items-center justify-center py-6 relative">
+        <!-- Centerpiece: Vertical Japanese Title & Poetic Subtitle -->
+        <div class="flex-1 flex flex-col items-center justify-center py-8 relative">
 
-          <!-- Subtle Inner Vintage Poster Hairline Box -->
-          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[216px] h-[292px] border border-vintage-gold/[0.12] pointer-events-none"></div>
+          <!-- Subtle Film Crosshair Accent -->
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[210px] h-[290px] border border-aged-gold/[0.1] pointer-events-none"></div>
 
-          <!-- Vertical Japanese Main Title Composition -->
-          <div class="anim-focal flex items-start justify-center gap-5 sm:gap-6">
-            <p class="writing-vertical font-jp-serif text-[10.5px] tracking-[0.38em] text-warm-muted/85 pt-2 select-none">
-              二〇二七年・特別企画
+          <!-- Vertical Main Title Composition -->
+          <div class="anim-focal flex items-start justify-center gap-6 sm:gap-7">
+            <!-- Left Vertical Whisper Line -->
+            <p class="writing-vertical font-jp-serif text-[11px] tracking-[0.42em] text-muted-ash leading-relaxed pt-3 select-none">
+              二〇二七年・特别予告
             </p>
 
-            <h1 class="writing-vertical hero-title-shimmer font-jp-serif font-medium text-[46px] sm:text-[50px] tracking-[0.36em] leading-none select-none drop-shadow-[0_6px_26px_rgba(200,169,126,0.14)]">
+            <!-- Hero Japanese Title with Subtle Warm Light Sheen -->
+            <h1 class="writing-vertical hero-title-sheen font-jp-serif font-normal text-[44px] sm:text-[48px] tracking-[0.38em] leading-none select-none drop-shadow-[0_6px_26px_rgba(200,169,126,0.14)]">
               偶然と想像
             </h1>
 
-            <p class="writing-vertical font-jp-serif text-[10.5px] tracking-[0.36em] text-vintage-gold/80 pt-10 select-none">
-              扉は開けたままで
+            <!-- Right Vertical Sub-note -->
+            <p class="writing-vertical font-jp-serif text-[10.5px] tracking-[0.36em] text-aged-gold/75 leading-relaxed pt-12 select-none">
+              めぐる季節と、君との記憶
             </p>
           </div>
 
-          <!-- Retro American Editorial English Subtitle + Japanese Sub-badge -->
-          <div class="anim-fade-2 mt-8 text-center w-full max-w-[330px]">
-            <p class="font-en-serif italic font-normal text-[22px] sm:text-[24px] tracking-[0.08em] text-cream-paper/95 leading-snug">
+          <!-- English Title & Slogan Block -->
+          <div class="anim-fade-2 mt-9 text-center max-w-[320px]">
+            <p class="font-en-serif italic font-light text-[20px] sm:text-[22px] tracking-[0.12em] text-cream-paper/95">
               Wheel of Fortune and Fantasy
             </p>
 
-           <div class="w-8 h-[1px] bg-paper-ivory/25 mx-auto my-4"></div>
+            <div class="w-8 h-[1px] bg-aged-gold/40 mx-auto my-4"></div>
 
-            <p class="font-jp-serif text-[13px] tracking-[0.22em] text-paper-ivory/90 leading-relaxed">
+            <p class="font-jp-serif text-[13px] tracking-[0.22em] text-cream-paper/90 leading-relaxed">
               日常の中に潜む、君という奇跡。
             </p>
-            <p class="font-en-serif italic text-[13px] tracking-[0.06em] text-silver-muted mt-1.5">
-              The miracle called &lsquo;You&rsquo; hidden in everyday life.
+            <p class="font-en-serif italic text-[13px] tracking-[0.06em] text-muted-ash mt-1.5">
+              The miracle called &lsquo;Yeonjun&rsquo; hidden in everyday life.
             </p>
           </div>
         </div>
@@ -443,438 +392,299 @@
         <div class="anim-fade-3 flex flex-col items-center">
           <div class="w-full flex items-end justify-between pb-4 hairline-b">
             <div>
-              <span class="font-mono-meta text-[9px] tracking-[0.28em] text-silver-muted block">COMING SOON — PRE-ORDER</span>
-              <span class="font-mono-meta text-[20px] tracking-[0.24em] text-paper-ivory font-light mt-0.5 block">2026.12.11</span>
+              <span class="font-mono-meta text-[9px] tracking-[0.28em] text-aged-gold/80 block">COMING SOON — PRE-ORDER</span>
+              <span class="font-mono-meta text-[20px] tracking-[0.24em] text-cream-paper font-light mt-0.5 block">2026.12.11</span>
             </div>
-            <div class="text-right font-mono-meta text-[9px] tracking-[0.22em] text-silver-muted leading-relaxed">
+            <div class="text-right font-mono-meta text-[9px] tracking-[0.22em] text-muted-ash leading-relaxed">
               <div>SEASON&rsquo;S GREETINGS</div>
-              <div class="text-paper-ivory/75">TEASER VER. 01</div>
+              <div class="text-cream-paper/75">TEASER VER. 01</div>
             </div>
           </div>
-      
 
+          <!-- Hairline Scroll Cue -->
           <a
-            href="#scenes"
-            class="group mt-4 flex flex-col items-center gap-1.5 py-1 focus:outline-none"
-            aria-label="Scroll to 12 Scenes of Coincidence"
+            href="#fragments"
+            class="group mt-5 flex flex-col items-center gap-2 py-1 focus:outline-none"
+            aria-label="Scroll to interactive film fragments"
           >
-            <span class="font-mono-meta text-[8.5px] tracking-[0.32em] text-warm-muted group-hover:text-vintage-gold transition-colors">
+            <span class="font-mono-meta text-[9px] tracking-[0.32em] text-muted-ash group-hover:text-aged-gold transition-colors">
               SCROLL TO OPEN
             </span>
-            <div class="w-[1px] h-7 bg-cream-paper/15 relative overflow-hidden">
-              <div class="scroll-line-inner absolute inset-0 bg-vintage-gold/85"></div>
+            <div class="w-[1px] h-8 bg-cream-paper/15 relative overflow-hidden">
+              <div class="scroll-line-inner absolute inset-0 bg-aged-gold/80"></div>
             </div>
           </a>
         </div>
       </section>
 
-      <!-- ========================================================
-           SECTION 2: 12 SCENES OF COINCIDENCE (MONTHLY CARDS PREVIEW)
-           ======================================================== -->
-      <section id="scenes" class="reveal-section px-5 pt-16 pb-20">
+      <!-- =======================================
+           SECTION 2: INTERACTIVE "偶然の断片" (35MM SCENE TEASER — 12 MONTHS)
+           ======================================= -->
+      <section id="fragments" class="reveal-section px-6 pt-16 pb-20">
 
         <!-- Section Header -->
-        <div class="flex items-end justify-between mb-5 px-1">
+        <div class="flex items-end justify-between mb-6">
           <div>
-            <p class="font-mono-meta text-[9px] tracking-[0.28em] text-vintage-gold uppercase">
-              12 MONTHLY CARDS
-            </p>
-            <h2 class="font-jp-serif text-[21px] tracking-[0.24em] text-cream-paper mt-1">
-              十二の情景
+            <p class="font-mono-meta text-[9px] tracking-[0.3em] text-aged-gold uppercase">Interactive 35mm Teaser</p>
+            <h2 class="font-jp-serif text-[20px] tracking-[0.26em] text-cream-paper mt-1">
+              偶然の断片
             </h2>
           </div>
-          <div class="text-right">
-            <span class="font-mono-meta text-[8.5px] tracking-[0.2em] text-warm-muted block">
-              VISUAL LOCKED &middot; TEXT PREVIEW
-            </span>
-            <span class="font-mono-meta text-[8px] tracking-[0.22em] text-cream-paper/45 block mt-0.5">
-              SWIPE OR DRAW
-            </span>
-          </div>
+          <span class="font-mono-meta text-[10px] tracking-[0.22em] text-muted-ash">
+            TAP / SWIPE
+          </span>
         </div>
 
-        <!-- 3:4 Portrait Film-Poster Card Stage -->
+        <!-- 35mm Contact Frame / Darkroom Viewfinder -->
         <div
-          id="cardStage"
+          id="sceneViewfinder"
           role="region"
-          aria-label="12 Monthly Cards interactive preview"
-          class="relative w-full aspect-[3/4] rounded-[3px] bg-film-espresso/90 border border-cream-paper/15 overflow-hidden select-none touch-pan-y shadow-[0_24px_56px_rgba(0,0,0,0.65)] transition-colors duration-700"
+          aria-label="Interactive 35mm film scene viewer"
+          class="relative w-full min-h-[390px] sm:min-h-[410px] rounded-[2px] bg-[#151412]/80 backdrop-blur-md border border-cream-paper/15 p-5 sm:p-6 flex flex-col justify-between select-none cursor-pointer overflow-hidden touch-pan-y transition-all duration-700"
         >
-          <!-- Shutter Exposure Flash Overlay -->
-          <div id="shutterFlash" class="absolute inset-0 bg-cream-paper opacity-0 pointer-events-none z-30"></div>
+          <!-- Exposure Shutter Flash Overlay -->
+          <div id="shutterFlash" class="absolute inset-0 bg-cream-paper opacity-0 pointer-events-none z-20"></div>
 
-          <!-- Month-Specific Abstract Darkroom Lighting Mood -->
-          <div id="cardMoodBg" class="absolute inset-0 pointer-events-none transition-all duration-1000"></div>
-
-          <!-- Subtle Diagonal Film Light Leak Bar -->
-          <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-[56%] h-[130%] bg-gradient-to-r from-transparent via-cream-paper/[0.045] to-transparent rotate-[11deg] pointer-events-none"></div>
-
-          <!-- May (05 / Ghost Girl) Exclusive Faint EKG / Silhouette SVG Layer -->
-          <div id="ghostGirlVisual" class="absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-700">
-            <!-- Soft Silhouette Aura -->
-            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_46%,rgba(158,59,51,0.34)_0%,rgba(14,13,12,0.1)_55%,rgba(14,13,12,0.85)_100%)]"></div>
-            <!-- Faint EKG Heartbeat & Silhouette Horizon -->
-            <svg class="absolute top-[52%] left-0 w-full h-24 opacity-60" viewBox="0 0 360 80" fill="none" preserveAspectRatio="none">
-              <path
-                class="ekg-path"
-                d="M0 44 L88 44 L106 44 L118 22 L130 62 L144 10 L158 68 L170 40 L182 44 L245 44 L256 33 L266 53 L276 44 L360 44"
-                stroke="#C8534A"
-                stroke-width="1.15"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-            <!-- Subtle Vertical Silhouette Echo Lines -->
-            <div class="absolute inset-y-8 left-1/2 -translate-x-1/2 w-[1px] bg-gradient-to-b from-transparent via-faded-crimson/40 to-transparent"></div>
-          </div>
-
-          <!-- September (09 / Birthday) Exclusive Vintage Stamp -->
+          <!-- Dynamic Inner Atmospheric Tint -->
           <div
-            id="birthdayStamp"
-            class="hidden absolute top-14 right-4 z-10 rotate-[8deg] px-2.5 py-1 border border-vintage-gold/55 rounded-[2px] bg-film-charcoal/55 backdrop-blur-[2px] pointer-events-none"
-          >
-            <span class="font-mono-meta text-[8.5px] tracking-[0.22em] text-vintage-gold block">
-              1999.09.13
+            id="frameMoodGlow"
+            class="absolute -inset-12 opacity-35 pointer-events-none transition-all duration-1000 blur-3xl"
+            style="background: radial-gradient(circle at 75% 25%, #6E5E4B 0%, transparent 65%);"
+          ></div>
+
+          <!-- Viewfinder Corner Crop Marks (Aged Gold) -->
+          <span class="crop-mark top-2.5 left-2.5 border-t border-l"></span>
+          <span class="crop-mark top-2.5 right-2.5 border-t border-r"></span>
+          <span class="crop-mark bottom-2.5 left-2.5 border-b border-l"></span>
+          <span class="crop-mark bottom-2.5 right-2.5 border-b border-r"></span>
+
+          <!-- Top Frame Sprocket Metadata -->
+          <div class="relative z-10 flex items-center justify-between pb-3 hairline-b">
+            <div class="flex items-center gap-2">
+              <span id="sceneCounter" class="font-mono-meta text-[10px] tracking-[0.26em] text-cream-paper">
+                SCENE 01 / 12
+              </span>
+              <span id="sceneBadgeGhost" class="hidden font-mono-meta text-[8.5px] tracking-[0.2em] px-1.5 py-0.5 border border-[#B94A48]/70 text-[#E08A8F] bg-[#7A2632]/25 rounded-[1px]">
+                GHOST GIRL
+              </span>
+              <span id="sceneBadgeBirthday" class="hidden font-mono-meta text-[8.5px] tracking-[0.2em] px-1.5 py-0.5 border border-aged-gold/60 text-aged-gold bg-aged-gold/10 rounded-[1px]">
+                0913
+              </span>
+            </div>
+            <span id="sceneMonthTag" class="font-mono-meta text-[10px] tracking-[0.26em] text-muted-ash">
+              JAN · 2027
             </span>
           </div>
 
-          <!-- Card Corner Vintage Crop Marks -->
-          <span class="crop-mark top-2.5 left-2.5 border-t border-l z-10"></span>
-          <span class="crop-mark top-2.5 right-2.5 border-t border-r z-10"></span>
-          <span class="crop-mark bottom-2.5 left-2.5 border-b border-l z-10"></span>
-          <span class="crop-mark bottom-2.5 right-2.5 border-b border-r z-10"></span>
-
-          <!-- Base Card Inner Layout -->
-          <div class="relative z-10 h-full p-5 sm:p-6 flex flex-col justify-between">
-
-            <!-- Top Meta Row -->
-            <div class="flex items-center justify-between pb-3 hairline-b">
-              <span id="cardSceneMeta" class="font-mono-meta text-[10px] tracking-[0.24em] text-vintage-gold">
-                SCENE 01 / JAN
-              </span>
-              <span class="font-mono-meta text-[8.5px] tracking-[0.18em] text-warm-muted border border-cream-paper/15 px-1.5 py-0.5 rounded-[2px]">
-                [ A5 &middot; VISUAL LOCKED ]
-              </span>
-            </div>
-
-            <!-- Center Main Typography -->
-            <div id="cardMainCopy" class="fade-swap my-auto py-4">
-              <!-- Tiny Editorial Reel Code -->
-              <div class="flex items-center gap-2 mb-4">
-                <span id="cardMonthOrdinal" class="font-en-serif italic text-[14px] tracking-[0.1em] text-vintage-gold/85">
-                  No. 01
-                </span>
-                <span class="w-6 h-[1px] bg-vintage-gold/35"></span>
-                <span id="cardMoodTag" class="font-mono-meta text-[8.5px] tracking-[0.22em] text-warm-muted uppercase">
-                  WINTER MIST
-                </span>
-              </div>
-
-              <!-- Main Japanese Title -->
-              <h3 id="cardJpTitle" class="font-jp-serif text-[22px] sm:text-[24px] leading-[1.6] tracking-[0.1em] text-cream-paper font-normal">
-                魔法（よりもっと不確か）
-              </h3>
-
-              <!-- English Subtitle -->
-              <p id="cardEnTitle" class="font-en-serif italic text-[17px] sm:text-[18px] leading-[1.45] tracking-[0.04em] text-cream-paper/75 mt-3">
-                Magic (or something less assuring)
-              </p>
-
-              <!-- Minimal Abstract Calendar Grid Hint (Purely Typographic Teaser) -->
-              <div class="mt-6 pt-3.5 hairline-t flex items-center justify-between font-mono-meta text-[8.5px] tracking-[0.22em] text-warm-muted/75">
-                <span>2027 CALENDAR MODULE</span>
-                <span id="cardFilmTag" class="text-cream-paper/65">YEONJUN / ヨンジュン</span>
-              </div>
-            </div>
-
-            <!-- Bottom Row: Vellum Tracing-Paper Toggle Button -->
-            <div class="pt-3 hairline-t flex items-center justify-between">
-              <span class="font-mono-meta text-[8.5px] tracking-[0.2em] text-warm-muted/75">
-                35MM ARCHIVE
-              </span>
-
-              <button
-                id="vellumToggleBtn"
-                type="button"
-                aria-expanded="false"
-                class="relative z-30 px-3 py-1.5 rounded-full border border-vintage-gold/45 bg-film-charcoal/70 hover:bg-vintage-gold/15 active:scale-95 transition-all flex items-center gap-1.5"
-              >
-                <span class="w-1.5 h-1.5 rounded-full bg-vintage-gold"></span>
-                <span id="vellumBtnLabel" class="font-mono-meta text-[9px] tracking-[0.16em] text-cream-paper">
-                  <span class="font-jp-serif tracking-[0.14em]">透かす</span> / VELLUM FRAGMENT
-                </span>
-              </button>
-            </div>
-          </div>
-
-          <!-- Interactive Translucent Vellum / Tracing Paper Sheet Overlay -->
-          <div
-            id="vellumSheet"
-            aria-hidden="true"
-            class="vellum-sheet absolute inset-x-0 bottom-0 top-12 z-20 p-5 sm:p-6 flex flex-col justify-between"
-          >
-            <div>
-              <div class="flex items-center justify-between pb-2.5 border-b border-cream-paper/20">
-                <span class="font-mono-meta text-[8.5px] tracking-[0.24em] text-vintage-gold uppercase">
-                  TRACING PAPER OVERLAY &middot; 硫酸紙
-                </span>
-                <span id="vellumSceneCode" class="font-mono-meta text-[8.5px] tracking-[0.2em] text-cream-paper/75">
-                  01 / JAN
-                </span>
-              </div>
-
-              <!-- Literary Excerpt & Yeonjun Lyric Fragment -->
-              <div id="vellumFragments" class="mt-5 space-y-4 overflow-y-auto max-h-[245px] pr-1 no-scrollbar">
-                <!-- Populated dynamically via JS -->
-              </div>
-            </div>
-
-            <!-- Bottom Spacer so Toggle Pill remains cleanly visible & tappable -->
-            <div class="pb-9 pt-3 border-t border-cream-paper/15 flex items-center justify-between font-mono-meta text-[8px] tracking-[0.2em] text-cream-paper/60">
-              <span>HIDDEN FRAGMENT</span>
-              <span>TAP PILL TO FOLD</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Controls Row: Prev Arrow + Retro Draw By Chance Button + Next Arrow -->
-        <div class="mt-4 flex items-center gap-2.5">
-          <button
-            id="prevCardBtn"
-            type="button"
-            aria-label="Previous month card"
-            class="w-11 h-12 shrink-0 rounded-[2px] border border-cream-paper/20 bg-film-espresso/75 hover:border-vintage-gold/60 hover:text-vintage-gold active:scale-95 transition-all flex items-center justify-center text-cream-paper"
-          >
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M15 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </button>
-
-          <button
-            id="drawChanceBtn"
-            type="button"
-            class="group flex-1 h-12 px-3 rounded-[2px] border border-vintage-gold/50 bg-gradient-to-b from-vintage-gold/[0.14] to-vintage-gold/[0.05] hover:from-vintage-gold/[0.24] hover:to-vintage-gold/[0.1] active:scale-[0.98] transition-all flex items-center justify-center gap-2.5"
-          >
-            <span class="font-jp-serif text-[13px] tracking-[0.18em] text-cream-paper group-hover:text-white">
-              偶然を引く
-            </span>
-            <span class="text-vintage-gold/50 text-[11px]">/</span>
-            <span class="font-mono-meta text-[9.5px] tracking-[0.2em] text-vintage-gold">
-              DRAW BY CHANCE
-            </span>
-          </button>
-
-          <button
-            id="nextCardBtn"
-            type="button"
-            aria-label="Next month card"
-            class="w-11 h-12 shrink-0 rounded-[2px] border border-cream-paper/20 bg-film-espresso/75 hover:border-vintage-gold/60 hover:text-vintage-gold active:scale-95 transition-all flex items-center justify-center text-cream-paper"
-          >
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </button>
-        </div>
-
-        <!-- Compact 01–12 Month Direct Index Bar (09 Highlighted with Tiny Birthday Dot) -->
-        <div
-          id="monthIndexBar"
-          role="tablist"
-          aria-label="Select month 01 to 12"
-          class="mt-3.5 grid grid-cols-12 gap-1"
-        >
-          <!-- Populated dynamically via JS -->
-        </div>
-      </section>
-
-      <!-- ========================================================
-           SECTION 3: INTERACTIVE RETRO RECEIPT GENERATOR ("偶然小票")
-           ======================================================== -->
-      <section id="receiptSection" class="reveal-section px-6 pt-6 pb-20">
-
-        <!-- Section Header -->
-        <div class="text-center mb-6">
-          <p class="font-mono-meta text-[9px] tracking-[0.28em] text-vintage-gold uppercase">
-            EPHEMERA PREVIEW &middot; INTERACTIVE
-          </p>
-          <h2 class="font-jp-serif text-[21px] tracking-[0.24em] text-cream-paper mt-1.5">
-            偶然小票
-          </h2>
-          <p class="font-en-serif italic text-[15px] tracking-[0.08em] text-warm-muted mt-1">
-            Coincidence Thermal Receipt Dispenser
-          </p>
-        </div>
-
-        <!-- Thermal Printer Slot Container -->
-        <div class="rounded-[3px] border border-vintage-gold/25 bg-film-espresso/85 p-5 shadow-[0_18px_46px_rgba(0,0,0,0.55)]">
-
-          <!-- Callout & Primary Print Trigger -->
-          <div id="receiptIntroBox" class="text-center">
-            <p class="font-jp-serif text-[12px] leading-[1.9] tracking-[0.1em] text-cream-paper/80 max-w-[300px] mx-auto">
-              按下按钮，为你打印一张今日专属的「偶然小票」。可截图留存或分享你的2027然竣电影坐标。
+          <!-- Center Dynamic Scene Typography -->
+          <div id="sceneContent" class="scene-content-fade relative z-10 my-auto py-7 flex flex-col justify-center">
+            <p id="sceneCodeLine" class="font-mono-meta text-[9.5px] tracking-[0.28em] text-aged-gold/85 mb-3">
+              FRAME 01 — JANUARY
             </p>
 
-            <button
-              id="printReceiptBtn"
-              type="button"
-              class="mt-5 w-full min-h-[48px] px-4 py-3 rounded-[2px] border border-vintage-gold/60 bg-vintage-gold/15 hover:bg-vintage-gold hover:text-film-charcoal active:scale-[0.98] transition-all font-mono-meta text-[10px] tracking-[0.2em] text-cream-paper flex flex-col items-center justify-center gap-0.5"
-            >
-              <span>PRINT MY COINCIDENCE RECEIPT</span>
-              <span class="font-jp-serif text-[11px] tracking-[0.22em] opacity-85">抽取偶然小票</span>
-            </button>
+            <h3 id="sceneJpTitle" class="font-jp-serif text-[21px] sm:text-[23px] leading-[1.65] tracking-[0.12em] text-cream-paper font-normal">
+              魔法（よりもっと不確か）
+            </h3>
+
+            <p id="sceneEnTitle" class="font-en-serif italic text-[15.5px] sm:text-[16.5px] tracking-[0.04em] text-cream-paper/75 mt-2 leading-snug">
+              Magic (or something less assuring)
+            </p>
+
+            <div id="sceneDivider" class="w-10 h-[1px] bg-aged-gold/35 my-5 transition-colors duration-500"></div>
+
+            <!-- Literary Excerpt Caption -->
+            <p id="sceneExcerpt" class="font-jp-serif text-[12px] leading-[2.05] tracking-[0.1em] text-cream-paper/70 text-justify">
+              魔法なんでしょ。人生の中でも最高の一日だったらしいじゃない。
+            </p>
           </div>
 
-          <!-- Printer Slot Lip -->
-          <div id="printerSlotLip" class="hidden mt-2 mb-0 relative">
-            <div class="h-3 w-full rounded-full bg-[#070606] border border-vintage-gold/30 shadow-[inset_0_3px_8px_rgba(0,0,0,0.95)] flex items-center justify-center">
-              <div class="w-[92%] h-[2px] bg-black rounded-full"></div>
+          <!-- Bottom Frame Film Strip Metadata -->
+          <div class="relative z-10 pt-3 hairline-t flex items-center justify-between">
+            <span class="font-mono-meta text-[9px] tracking-[0.22em] text-muted-ash">
+              CAST: <span class="font-jp-serif text-cream-paper/85">ヨンジュン</span> (YEONJUN)
+            </span>
+            <span class="font-mono-meta text-[9px] tracking-[0.2em] text-aged-gold/65">
+              TAKE 0913
+            </span>
+          </div>
+        </div>
+
+        <!-- Subtle 12-Frame Film Strip Progress Indicator -->
+        <div id="frameDots" class="flex items-center justify-between gap-1 mt-3.5 px-0.5" role="tablist" aria-label="Select month scene 01 to 12">
+          <!-- Populated via JS -->
+        </div>
+
+        <!-- Minimal Tactile Controls (Version 1 Exact 2-Column Layout) -->
+        <div class="grid grid-cols-2 gap-3 mt-5">
+          <button
+            id="randomSceneBtn"
+            type="button"
+            class="group min-h-[46px] px-4 py-3 rounded-[2px] border border-aged-gold/40 bg-aged-gold/[0.07] hover:bg-aged-gold/[0.15] hover:border-aged-gold/70 active:scale-[0.98] transition-all flex flex-col items-center justify-center"
+          >
+            <span class="font-jp-serif text-[12.5px] tracking-[0.22em] text-cream-paper">偶然を引く</span>
+            <span class="font-mono-meta text-[8.5px] tracking-[0.26em] text-aged-gold group-hover:text-cream-paper mt-0.5">RANDOM</span>
+          </button>
+
+          <button
+            id="nextSceneBtn"
+            type="button"
+            class="group min-h-[46px] px-4 py-3 rounded-[2px] border border-cream-paper/20 bg-cream-paper/[0.03] hover:bg-cream-paper/[0.08] hover:border-aged-gold/45 active:scale-[0.98] transition-all flex flex-col items-center justify-center"
+          >
+            <span class="font-jp-serif text-[12.5px] tracking-[0.22em] text-cream-paper">次へ</span>
+            <span class="font-mono-meta text-[8.5px] tracking-[0.26em] text-muted-ash group-hover:text-cream-paper/85 mt-0.5">NEXT FRAME</span>
+          </button>
+        </div>
+
+        <p class="text-center font-mono-meta text-[9px] tracking-[0.22em] text-muted-ash/75 mt-4">
+          EVERY ENCOUNTER IS A COINCIDENCE &middot; 12 SCENES OF 2027
+        </p>
+      </section>
+
+      <!-- =======================================
+           SECTION 3: COINCIDENCE SLIP / 偶然の一枚 (THERMAL RECEIPT FROM VERSION 2)
+           ======================================= -->
+      <section id="coincidenceSlip" class="reveal-section px-6 pt-10 pb-20">
+
+        <!-- Section Header (Styled consistently with Version 1) -->
+        <div class="flex items-end justify-between mb-6">
+          <div>
+            <p class="font-mono-meta text-[9px] tracking-[0.3em] text-aged-gold uppercase">
+              COINCIDENCE SLIP
+            </p>
+            <h2 class="font-jp-serif text-[20px] tracking-[0.26em] text-cream-paper mt-1">
+              偶然の一枚
+            </h2>
+          </div>
+          <span class="font-mono-meta text-[9.5px] tracking-[0.22em] text-muted-ash">
+            PRINT A MOMENT
+          </span>
+        </div>
+
+        <!-- Retro Thermal Slot Dispenser -->
+        <div class="rounded-[2px] border border-cream-paper/15 bg-card-surface/85 backdrop-blur-sm p-5 shadow-[0_18px_44px_rgba(0,0,0,0.52)]">
+
+          <!-- Trigger Button -->
+          <button
+            id="printSlipBtn"
+            type="button"
+            class="w-full min-h-[48px] px-4 py-3 rounded-[2px] border border-aged-gold/50 bg-aged-gold/[0.1] hover:bg-aged-gold hover:text-film-charcoal active:scale-[0.98] transition-all flex items-center justify-center gap-2.5 text-cream-paper"
+          >
+            <span class="font-jp-serif text-[13px] tracking-[0.18em]">
+              偶然を受け取る
+            </span>
+            <span class="opacity-45">&middot;</span>
+            <span class="font-mono-meta text-[9.5px] tracking-[0.2em]">
+              PRINT A MOMENT
+            </span>
+          </button>
+
+          <!-- Recessed Dark Thermal Slot Lip (Reveals on Click) -->
+          <div id="slotLip" class="hidden mt-5">
+            <div class="h-2.5 w-full rounded-full bg-[#070606] border border-aged-gold/25 shadow-[inset_0_2px_6px_rgba(0,0,0,0.95)] flex items-center justify-center">
+              <div class="w-[90%] h-[2px] bg-black rounded-full"></div>
             </div>
           </div>
 
-          <!-- Sliding Receipt Output Viewport -->
-          <div id="receiptViewport" class="hidden receipt-printer-viewport -mt-1.5 pt-1 px-1.5 pb-2">
-            <div id="receiptPaperCard" class="receipt-paper relative w-full mx-auto">
+          <!-- Sliding Vintage Cream Thermal Receipt Slip -->
+          <div id="receiptViewport" class="hidden receipt-viewport -mt-1 pt-1 px-1 pb-2">
+            <div id="receiptPaper" class="receipt-paper relative w-full mx-auto">
 
-              <!-- Top Serrated Zigzag Edge (Pure SVG) -->
-              <svg class="w-full h-[8px] block -mt-[1px]" viewBox="0 0 320 8" preserveAspectRatio="none" aria-hidden="true">
-                <polygon
-                  fill="#171513"
-                  points="0,0 8,8 16,0 24,8 32,0 40,8 48,0 56,8 64,0 72,8 80,0 88,8 96,0 104,8 112,0 120,8 128,0 136,8 144,0 152,8 160,0 168,8 176,0 184,8 192,0 200,8 208,0 216,8 224,0 232,8 240,0 248,8 256,0 264,8 272,0 280,8 288,0 296,8 304,0 312,8 320,0 320,0 0,0"
-                />
-              </svg>
+              <!-- Inner Thermal Content -->
+              <div class="px-5 pt-5 pb-5 text-[#151412]">
 
-              <!-- Inner Thermal Print Content -->
-              <div class="px-5 pt-4 pb-5 text-[#171513]">
-                <!-- Receipt Top Header -->
-                <div class="text-center pb-3.5 receipt-divider border-t-0 border-b border-dashed border-[#171513]/35">
-                  <p class="font-mono-meta text-[8px] tracking-[0.26em] uppercase text-[#171513]/65">
-                    *** ADMIT ONE &middot; COINCIDENCE SLIP ***
-                  </p>
-                  <p class="font-en-serif italic font-semibold text-[18px] tracking-[0.06em] mt-1.5 leading-tight">
+                <!-- Receipt Header -->
+                <div class="text-center pb-3.5 border-b border-dashed border-[#151412]/30">
+                  <p class="font-en-serif italic font-medium text-[17px] tracking-[0.06em] leading-tight">
                     WHEEL OF FORTUNE &amp; FANTASY
                   </p>
-                  <p class="font-mono-meta text-[9px] tracking-[0.18em] text-[#171513]/80 mt-1">
-                    2027 COLLECTION &middot; NO. 19990913
+                  <p class="font-mono-meta text-[9px] tracking-[0.22em] text-[#151412]/75 mt-1.5">
+                    YEONJUN &middot; <span class="font-jp-serif tracking-[0.18em]">ヨンジュン</span>
                   </p>
                 </div>
 
-                <!-- Serial & Timestamp Grid -->
-                <div class="py-3 space-y-1.5 font-mono-meta text-[9px] tracking-[0.12em]">
-                  <div class="flex items-center justify-between">
-                    <span class="text-[#171513]/60">SERIAL NO.</span>
-                    <span id="receiptSerial" class="font-medium">YJ-0913-0001</span>
-                  </div>
-                  <div class="flex items-center justify-between">
-                    <span class="text-[#171513]/60">PRINTED AT</span>
-                    <span id="receiptDateTime">2026-11-25 00:00</span>
-                  </div>
-                  <div class="flex items-center justify-between">
-                    <span class="text-[#171513]/60">STARRING</span>
-                    <span class="font-medium">CHOI YEONJUN / <span class="font-jp-serif">ヨンジュン</span></span>
-                  </div>
-                </div>
-
-                <!-- Indie Film Reference Block -->
-                <div class="py-3.5 receipt-divider">
-                  <span class="font-mono-meta text-[8px] tracking-[0.22em] text-[#171513]/55 uppercase block">
-                    TODAY&rsquo;S FILM REFERENCE
+                <!-- Random Movie Reference -->
+                <div class="py-3.5">
+                  <span class="font-mono-meta text-[8px] tracking-[0.24em] text-[#151412]/55 uppercase block">
+                    FILM REFERENCE
                   </span>
-                  <p id="receiptFilm" class="font-jp-serif font-medium text-[15px] tracking-[0.14em] text-[#171513] mt-1.5">
+                  <p id="receiptMovie" class="font-jp-serif font-medium text-[14.5px] tracking-[0.12em] text-[#151412] mt-1.5">
                     夜空はいつでも最高密度の青色だ
                   </p>
                 </div>
 
-                <!-- Random Quote / Lyric Fragment -->
-                <div class="py-3.5 receipt-divider">
-                  <span class="font-mono-meta text-[8px] tracking-[0.22em] text-[#171513]/55 uppercase block">
-                    DRAWN FRAGMENT
+                <!-- Random Fragment (Literary Quote or Yeonjun Lyric) -->
+                <div class="py-3.5 receipt-rule">
+                  <span class="font-mono-meta text-[8px] tracking-[0.24em] text-[#151412]/55 uppercase block">
+                    FRAGMENT
                   </span>
-                  <p id="receiptQuote" class="font-jp-serif text-[12.5px] leading-[1.85] tracking-[0.06em] text-[#171513]/90 mt-1.5">
+                  <p id="receiptLine" class="font-jp-serif text-[12.5px] leading-[1.85] tracking-[0.05em] text-[#151412]/90 mt-1.5">
                     人生における、ヨンジュンという名の季節。
                   </p>
                 </div>
 
-                <!-- Launch Date Highlight -->
-                <div class="py-3 receipt-divider flex items-center justify-between font-mono-meta text-[9.5px] tracking-[0.16em]">
-                  <span class="text-[#171513]/65">LAUNCH DATE</span>
-                  <span class="font-medium bg-[#171513] text-[#F2ECE1] px-2 py-0.5">2026.12.11</span>
-                </div>
+                <!-- Footer Metadata & Crisp Procedural SVG Barcode -->
+                <div class="pt-3.5 receipt-rule">
+                  <div class="flex items-center justify-between font-mono-meta text-[9px] tracking-[0.18em] text-[#151412]/80 mb-3.5">
+                    <span>NO. 0913</span>
+                    <span>ONLINE 2026.12.11</span>
+                  </div>
 
-                <!-- Pure SVG Thermal Barcode -->
-                <div class="pt-4 receipt-divider flex flex-col items-center">
-                  <svg id="receiptBarcode" class="w-full max-w-[240px] h-10" viewBox="0 0 240 40" aria-hidden="true"></svg>
-                  <p id="receiptBarcodeText" class="font-mono-meta text-[8px] tracking-[0.32em] text-[#171513]/70 mt-1.5">
-                    19990913 20261211 2027
-                  </p>
-                  <p class="font-en-serif italic text-[11px] text-[#171513]/60 mt-2">
-                    Keep this slip until the door opens.
-                  </p>
+                  <svg id="receiptBarcode" class="w-full max-w-[230px] h-8 mx-auto block" viewBox="0 0 230 32" aria-hidden="true"></svg>
                 </div>
               </div>
 
-              <!-- Bottom Serrated Zigzag Edge (Pure SVG) -->
+              <!-- Serrated Bottom Edge (Pure SVG) -->
               <svg class="w-full h-[8px] block -mb-[1px]" viewBox="0 0 320 8" preserveAspectRatio="none" aria-hidden="true">
                 <polygon
-                  fill="#171513"
+                  fill="#151412"
                   points="0,8 8,0 16,8 24,0 32,8 40,0 48,8 56,0 64,8 72,0 80,8 88,0 96,8 104,0 112,8 120,0 128,8 136,0 144,8 152,0 160,8 168,0 176,8 184,0 192,8 200,0 208,8 216,0 224,8 232,0 240,8 248,0 256,8 264,0 272,8 280,0 288,8 296,0 304,8 312,0 320,8 320,8 0,8"
                 />
               </svg>
             </div>
           </div>
-
-          <!-- Re-Print Button (Shown after first receipt prints) -->
-          <div id="reprintWrap" class="hidden mt-4 text-center">
-            <button
-              id="reprintReceiptBtn"
-              type="button"
-              class="w-full min-h-[44px] px-4 py-2.5 rounded-[2px] border border-vintage-gold/45 bg-film-charcoal/70 hover:bg-vintage-gold/15 active:scale-[0.98] transition-all font-mono-meta text-[9.5px] tracking-[0.22em] text-vintage-gold"
-            >
-              RE-PRINT <span class="opacity-50 mx-1">/</span> <span class="font-jp-serif text-cream-paper tracking-[0.18em]">再次抽取</span>
-            </button>
-          </div>
         </div>
       </section>
 
-      <!-- ========================================================
-           SECTION 5: LAUNCH COUNTDOWN & CINEMA BILLING BLOCK FOOTER
-           ======================================================== -->
-      <footer id="release" class="reveal-section px-6 pt-4 pb-14">
+      <!-- =======================================
+           SECTION 4: RELEASE COUNTDOWN & ARTHOUSE BILLING BLOCK FOOTER
+           ======================================= -->
+      <footer id="release" class="reveal-section px-6 pt-8 pb-14">
 
-        <!-- Live Countdown Module -->
-        <div class="rounded-[3px] border border-cream-paper/15 bg-film-espresso/75 backdrop-blur-sm px-5 py-8 text-center">
-          <p class="font-mono-meta text-[9px] tracking-[0.3em] text-vintage-gold uppercase">
-            LAUNCH COUNTDOWN &middot; 2026.12.11
+        <!-- Release Countdown Card -->
+        <div class="rounded-[2px] border border-cream-paper/15 bg-card-surface/80 backdrop-blur-sm px-5 py-8 text-center">
+          <p class="font-mono-meta text-[9.5px] tracking-[0.3em] text-aged-gold/90 uppercase">
+            PRE-ORDER OPENS — 2026.12.11
           </p>
 
-          <!-- Tabular Monospace Countdown Digits -->
-          <div id="countdownGrid" class="grid grid-cols-4 gap-1.5 mt-6 mb-7 max-w-[320px] mx-auto tabular-nums">
+          <!-- Countdown Digits -->
+          <div id="countdownGrid" class="grid grid-cols-4 gap-2 mt-6 mb-7 max-w-[320px] mx-auto tabular-nums">
             <div class="flex flex-col items-center">
-              <span id="cdDays" class="font-mono-meta text-[26px] sm:text-[28px] font-light tracking-[0.06em] text-cream-paper">00</span>
-              <span class="font-mono-meta text-[8px] tracking-[0.24em] text-warm-muted mt-1">DAYS</span>
+              <span id="cdDays" class="font-mono-meta text-[26px] sm:text-[28px] font-light tracking-[0.1em] text-cream-paper">00</span>
+              <span class="font-mono-meta text-[8.5px] tracking-[0.24em] text-muted-ash mt-1">DAYS</span>
             </div>
             <div class="flex flex-col items-center border-l border-cream-paper/10">
-              <span id="cdHours" class="font-mono-meta text-[26px] sm:text-[28px] font-light tracking-[0.06em] text-cream-paper">00</span>
-              <span class="font-mono-meta text-[8px] tracking-[0.24em] text-warm-muted mt-1">HRS</span>
+              <span id="cdHours" class="font-mono-meta text-[26px] sm:text-[28px] font-light tracking-[0.1em] text-cream-paper">00</span>
+              <span class="font-mono-meta text-[8.5px] tracking-[0.24em] text-muted-ash mt-1">HRS</span>
             </div>
             <div class="flex flex-col items-center border-l border-cream-paper/10">
-              <span id="cdMinutes" class="font-mono-meta text-[26px] sm:text-[28px] font-light tracking-[0.06em] text-cream-paper">00</span>
-              <span class="font-mono-meta text-[8px] tracking-[0.24em] text-warm-muted mt-1">MIN</span>
+              <span id="cdMinutes" class="font-mono-meta text-[26px] sm:text-[28px] font-light tracking-[0.1em] text-cream-paper">00</span>
+              <span class="font-mono-meta text-[8.5px] tracking-[0.24em] text-muted-ash mt-1">MIN</span>
             </div>
             <div class="flex flex-col items-center border-l border-cream-paper/10">
-              <span id="cdSeconds" class="font-mono-meta text-[26px] sm:text-[28px] font-light tracking-[0.06em] text-vintage-gold">00</span>
-              <span class="font-mono-meta text-[8px] tracking-[0.24em] text-warm-muted mt-1">SEC</span>
+              <span id="cdSeconds" class="font-mono-meta text-[26px] sm:text-[28px] font-light tracking-[0.1em] text-aged-gold">00</span>
+              <span class="font-mono-meta text-[8.5px] tracking-[0.24em] text-muted-ash mt-1">SEC</span>
             </div>
           </div>
 
-          <p id="countdownOpenedNote" class="hidden font-en-serif italic text-[17px] tracking-[0.08em] text-vintage-gold mb-6">
-            The door is now open. 2027 Collection has launched.
+          <p id="countdownOpenedNote" class="hidden font-en-serif italic text-[17px] tracking-[0.1em] text-aged-gold mb-6">
+            The door is now open. Pre-order has begun.
           </p>
 
           <!-- Add to Calendar (.ICS) Button -->
           <button
             id="addCalendarBtn"
             type="button"
-            class="w-full max-w-[260px] mx-auto min-h-[44px] px-5 py-3 rounded-[2px] border border-vintage-gold/45 bg-cream-paper/[0.04] hover:bg-cream-paper hover:text-film-charcoal active:scale-[0.98] transition-all font-mono-meta text-[9.5px] tracking-[0.22em] text-cream-paper flex items-center justify-center gap-2.5"
+            class="w-full max-w-[260px] mx-auto min-h-[44px] px-5 py-3 rounded-[2px] border border-aged-gold/45 bg-aged-gold/[0.06] hover:bg-cream-paper hover:text-film-charcoal hover:border-cream-paper active:scale-[0.98] transition-all font-mono-meta text-[10px] tracking-[0.24em] text-cream-paper flex items-center justify-center gap-2.5"
           >
             <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <rect x="3" y="4" width="18" height="17" rx="1"></rect>
@@ -883,37 +693,35 @@
             <span>ADD TO CALENDAR (.ICS)</span>
           </button>
 
-          <p class="font-jp-serif text-[11px] tracking-[0.2em] text-warm-muted mt-4">
-            二〇二六年十二月十一日 上线预告
+          <p class="font-jp-serif text-[11px] tracking-[0.2em] text-muted-ash mt-4">
+            二〇二六年十二月十一日 公開予定
           </p>
         </div>
 
-        <!-- Minimal Cinema Billing Block -->
-        <div class="mt-12 pt-6 hairline-t text-center">
-          <p class="font-mono-meta text-[8px] leading-[2.05] tracking-[0.17em] text-warm-muted/80 max-w-[360px] mx-auto uppercase">
-            FEATURING CHOI YEONJUN
-            <span class="opacity-45 mx-1">&middot;</span>
-            12 MONTHLY CARDS ENCLOSED
-            <span class="opacity-45 mx-1">&middot;</span>
-            <span class="font-jp-serif normal-case tracking-[0.16em] text-cream-paper/70">人生における、ヨンジュンという名の季節。</span>
-            <span class="opacity-45 mx-1">&middot;</span>
-            NO LABELS, JUST ME
+        <!-- Japanese Cinema Poster Billing Block -->
+        <div class="mt-14 pt-6 hairline-t text-center">
+          <p class="font-mono-meta text-[8.5px] leading-[1.95] tracking-[0.18em] text-muted-ash/80 uppercase max-w-[360px] mx-auto">
+            2027 SEASON&rsquo;S GREETINGS PROJECT <span class="text-aged-gold/40">/</span>
+            STARRING: <span class="text-cream-paper/85">CHOI YEONJUN (<span class="font-jp-serif">ヨンジュン</span>)</span> <span class="text-aged-gold/40">/</span>
+            CONCEPT INSPIRED BY WHEEL OF FORTUNE AND FANTASY <span class="text-aged-gold/40">/</span>
+            SPECIAL THANKS: MOA <span class="text-aged-gold/40">/</span>
+            DESIGNED FOR 12 MONTHLY CARDS
           </p>
 
-          <!-- Strict Restrained Copyright Line -->
-          <p class="font-mono-meta text-[7.5px] tracking-[0.26em] text-warm-muted/40 mt-6">
-            &copy; YEONEPOCH 2027
+          <!-- Very Bottom Tiny Copyright Line -->
+          <p class="font-mono-meta text-[8px] tracking-[0.26em] text-muted-ash/45 mt-6 select-none">
+            &copy; 2027 YEONEPOCH. ALL RIGHTS RESERVED.
           </p>
         </div>
       </footer>
     </main>
 
-    <!-- Subtle Inline Cinema Toast Notification -->
+    <!-- Subtle Inline Cinema Toast Notification (No alert() used) -->
     <div
       id="cinemaToast"
       role="status"
       aria-live="polite"
-      class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-[2px] border border-vintage-gold/35 bg-film-espresso/95 backdrop-blur-md font-mono-meta text-[9px] tracking-[0.2em] text-cream-paper shadow-2xl opacity-0 pointer-events-none translate-y-2 transition-all duration-300 whitespace-nowrap"
+      class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-[2px] border border-aged-gold/35 bg-card-surface/95 backdrop-blur-md font-mono-meta text-[9.5px] tracking-[0.2em] text-cream-paper shadow-2xl opacity-0 pointer-events-none translate-y-2 transition-all duration-300 whitespace-nowrap"
     >
       CALENDAR REMINDER SAVED (.ICS)
     </div>
@@ -923,196 +731,157 @@
     (function () {
       'use strict';
 
-      /* ==========================================================
-         1. OFFICIAL BRIEF DATA SETS
-         ========================================================== */
-      const HERO_TAGLINES = [
-        '日常の中に潜む、君という奇跡。',
-        '時の流れに刻まれた、君という確かな軌跡。',
-        '日常の隙間に落ちた、君という光を拾い集めて。',
-        'めぐる季節と、君との記憶。'
-      ];
-
-      const MONTHLY_CARDS = [
+      /* ===========================================================
+         1. SCENE DATA (FINAL 12 MONTHS FROM BRIEF) & COINCIDENCE SLIP
+         =========================================================== */
+      const SCENES = [
         {
-          num: '01',
-          month: 'JAN',
-          moodTag: 'WINTER MIST',
+          id: '01',
+          monthShort: 'JAN',
+          frameLabel: 'FRAME 01 — JANUARY',
           jpTitle: '魔法（よりもっと不確か）',
           enTitle: 'Magic (or something less assuring)',
-          fragments: [
-            { lang: 'jp', text: '魔法なんでしょ。人生の中でも最高の一日だったらしいじゃない。' },
-            { lang: 'jp', text: '国境の長いトンネルを抜けると雪国であった。夜の底が白くなった。' }
-          ],
-          canvasRgb: [124, 146, 168],
-          cardBg: 'radial-gradient(circle at 75% 18%, rgba(164, 192, 214, 0.24) 0%, rgba(28, 38, 48, 0.42) 48%, rgba(14, 13, 12, 0.92) 100%)',
-          isGhostGirl: false,
+          excerpt: '魔法なんでしょ。人生の中でも最高の一日だったらしいじゃない。',
+          moodRgb: [184, 166, 140],
+          glowHex: '#6E5E4B',
+          isGhost: false,
           isBirthday: false
         },
         {
-          num: '02',
-          month: 'FEB',
-          moodTag: 'QUIET COINCIDENCE',
+          id: '02',
+          monthShort: 'FEB',
+          frameLabel: 'FRAME 02 — FEBRUARY',
           jpTitle: '偶然は、時に誰かを救う。',
           enTitle: 'Coincidence sometimes saves someone.',
-          fragments: [
-            { lang: 'jp', text: '世界中のどこかに、自分にとっての百パーセントの存在が必ずいるはずだと。そしてある日、偶然という名の魔法がふとかかり、その奇跡はたしかに起こったのだ。' }
-          ],
-          canvasRgb: [96, 114, 146],
-          cardBg: 'radial-gradient(circle at 25% 22%, rgba(112, 134, 174, 0.22) 0%, rgba(25, 28, 38, 0.5) 52%, rgba(14, 13, 12, 0.94) 100%)',
-          isGhostGirl: false,
+          excerpt: '万有引力とは、ひき合う孤独の力である。',
+          moodRgb: [158, 146, 132],
+          glowHex: '#524C46',
+          isGhost: false,
           isBirthday: false
         },
         {
-          num: '03',
-          month: 'MAR',
-          moodTag: 'DAWN OF SPRING',
+          id: '03',
+          monthShort: 'MAR',
+          frameLabel: 'FRAME 03 — MARCH',
           jpTitle: '春の訪れ、始まりの予感。',
           enTitle: 'Premonition of Spring',
-          fragments: [
-            { lang: 'jp', text: '春はあけぼの。やうやう白くなりゆく山ぎは、少し明かりて、紫だちたる雲の細くたなびきたる。' },
-            { lang: 'en', text: 'You walked in my life like you own it' }
-          ],
-          canvasRgb: [192, 152, 118],
-          cardBg: 'radial-gradient(circle at 78% 22%, rgba(212, 168, 124, 0.26) 0%, rgba(112, 82, 92, 0.22) 48%, rgba(14, 13, 12, 0.92) 100%)',
-          isGhostGirl: false,
+          excerpt: '春はあけぼの。やうやう白くなりゆく山ぎは、少し明かりて、紫だちたる雲の細くたなびきたる。',
+          moodRgb: [196, 162, 128],
+          glowHex: '#765D48',
+          isGhost: false,
           isBirthday: false
         },
         {
-          num: '04',
-          month: 'APR',
-          moodTag: 'TUNGSTEN DUSK',
+          id: '04',
+          monthShort: 'APR',
+          frameLabel: 'FRAME 04 — APRIL',
           jpTitle: 'ハッピーアワー',
           enTitle: 'Happy Hour',
-          fragments: [
-            { lang: 'jp', text: '告白は子供がするものですよ。大人は誘惑してください。誘惑するには、まず人間を捨てることです。猫になるか、虎になるか、雨に濡れた犬になるか。' }
-          ],
-          canvasRgb: [200, 154, 96],
-          cardBg: 'radial-gradient(circle at 30% 78%, rgba(208, 156, 92, 0.28) 0%, rgba(64, 44, 28, 0.35) 50%, rgba(14, 13, 12, 0.92) 100%)',
-          isGhostGirl: false,
+          excerpt: '人を好きになった瞬間って、ずーっとずーっと残っていくものだよ。それだけが、生きてく勇気になる。暗闇を照らす、懐中電灯になるよ。',
+          moodRgb: [204, 162, 110],
+          glowHex: '#826342',
+          isGhost: false,
           isBirthday: false
         },
         {
-          num: '05',
-          month: 'MAY',
-          moodTag: 'GHOST GIRL · SHADOW',
+          id: '05',
+          monthShort: 'MAY',
+          frameLabel: 'FRAME 05 — MAY',
           jpTitle: '魂の行方、あるいは美しい幻。',
           enTitle: 'Where my soul belongs, my beautiful ghost.',
-          fragments: [
-            { lang: 'en', text: 'You can be my ghost girl\nYou can take my soul, girl\n나를 잃은 채 전부 잊을게 real world' },
-            { lang: 'jp', text: '現実を忘れて、君という幻影に溺れる。' }
-          ],
-          canvasRgb: [158, 59, 51],
-          cardBg: 'radial-gradient(circle at 50% 44%, rgba(158, 59, 51, 0.36) 0%, rgba(56, 18, 18, 0.45) 45%, rgba(10, 9, 9, 0.96) 100%)',
-          isGhostGirl: true,
+          excerpt: '現実を忘れて、君という幻影に溺れる。',
+          moodRgb: [122, 38, 50],
+          glowHex: '#6A222C',
+          isGhost: true,
           isBirthday: false
         },
         {
-          num: '06',
-          month: 'JUN',
-          moodTag: 'MONSOON ECHO',
+          id: '06',
+          monthShort: 'JUN',
+          frameLabel: 'FRAME 06 — JUNE',
           jpTitle: '偽りのない響き',
           enTitle: 'An honest echo',
-          fragments: [
-            { lang: 'jp', text: '鳴神の少しとよみてさし曇り 雨も降らぬか君を留めむ。' },
-            { lang: 'en', text: 'All I want is for you to hear me as I am, nothing more, nothing less.' }
-          ],
-          canvasRgb: [94, 124, 132],
-          cardBg: 'radial-gradient(circle at 70% 24%, rgba(108, 144, 152, 0.24) 0%, rgba(28, 42, 46, 0.44) 50%, rgba(14, 13, 12, 0.94) 100%)',
-          isGhostGirl: false,
+          excerpt: '鳴神の 少しとよみて さし曇り 雨も降らぬか 君を留めむ。',
+          moodRgb: [132, 144, 138],
+          glowHex: '#45504B',
+          isGhost: false,
           isBirthday: false
         },
         {
-          num: '07',
-          month: 'JUL',
-          moodTag: 'TOKYO NIGHT BLUE',
+          id: '07',
+          monthShort: 'JUL',
+          frameLabel: 'FRAME 07 — JULY',
           jpTitle: '真夏の夜空、都市の瞬きに君を探して。',
           enTitle: 'Searching for you beneath the midsummer city lights.',
-          fragments: [
-            { lang: 'jp', text: '夏は夜。月の頃はさらなり、闇もなほ、螢の多く飛びちがひたる。' },
-            { lang: 'en', text: 'Close my eyes\nI don\'t know if I\'d rather be dreamin\nOr be with you' }
-          ],
-          canvasRgb: [48, 86, 136],
-          cardBg: 'radial-gradient(circle at 68% 18%, rgba(48, 96, 162, 0.34) 0%, rgba(18, 34, 62, 0.48) 52%, rgba(10, 12, 16, 0.95) 100%)',
-          isGhostGirl: false,
+          excerpt: '見えぬけれどもあるんだよ、見えぬものでもあるんだよ。',
+          moodRgb: [96, 116, 142],
+          glowHex: '#2F3E52',
+          isGhost: false,
           isBirthday: false
         },
         {
-          num: '08',
-          month: 'AUG',
-          moodTag: 'HEAT HAZE SEPIA',
+          id: '08',
+          monthShort: 'AUG',
+          frameLabel: 'FRAME 08 — AUGUST',
           jpTitle: '記憶のすれ違い',
           enTitle: 'Misalignment of memories',
-          fragments: [
-            { lang: 'jp', text: '本当に他人を見たいと望むなら、自分自身を深くまっすぐ見つめるしかないんです。' },
-            { lang: 'en', text: 'I always knew that I\'d be somebody, I never could relate to these nobodies' }
-          ],
-          canvasRgb: [164, 134, 96],
-          cardBg: 'radial-gradient(circle at 26% 24%, rgba(176, 140, 98, 0.25) 0%, rgba(56, 44, 30, 0.38) 50%, rgba(14, 13, 12, 0.94) 100%)',
-          isGhostGirl: false,
+          excerpt: '本当に他人を見たいと望むなら、自分自身を深くまっすぐ見つめるしかないんです。',
+          moodRgb: [176, 148, 114],
+          glowHex: '#6E5A42',
+          isGhost: false,
           isBirthday: false
         },
         {
-          num: '09',
-          month: 'SEP',
-          moodTag: 'GOLDEN HALO · 0913',
+          id: '09',
+          monthShort: 'SEP',
+          frameLabel: 'FRAME 09 — SEPTEMBER · 0913',
           jpTitle: '偶然は、君を連れてきた。',
           enTitle: 'Coincidence brought you here.',
-          fragments: [
-            { lang: 'en', text: 'You\'ve been chasing highs in all different cities\n눈물 젖은 땅은 또 꽃길이\nYou still shine, 준아 아침은 오잖아\n겁내지 마' }
-          ],
-          canvasRgb: [212, 174, 114],
-          cardBg: 'radial-gradient(circle at 52% 28%, rgba(218, 178, 112, 0.34) 0%, rgba(98, 72, 38, 0.34) 48%, rgba(14, 13, 12, 0.92) 100%)',
-          isGhostGirl: false,
+          excerpt: '世界中のどこかに、自分にとっての百パーセントの存在が必ずいるはずだと。そう、私たちは奇跡を信じていた。',
+          moodRgb: [208, 174, 124],
+          glowHex: '#8C6F47',
+          isGhost: false,
           isBirthday: true
         },
         {
-          num: '10',
-          month: 'OCT',
-          moodTag: 'AUTUMN OCHRE',
+          id: '10',
+          monthShort: 'OCT',
+          frameLabel: 'FRAME 10 — OCTOBER',
           jpTitle: '選択の向こう側',
           enTitle: 'Beyond the choice',
-          fragments: [
-            { lang: 'jp', text: '秋は夕暮れ。夕日のさして山の端にいと近うなりたるに。' },
-            { lang: 'en', text: 'My very presence speaks for me, and it will not be silenced.' }
-          ],
-          canvasRgb: [182, 122, 82],
-          cardBg: 'radial-gradient(circle at 76% 74%, rgba(190, 124, 78, 0.28) 0%, rgba(66, 38, 24, 0.38) 50%, rgba(14, 13, 12, 0.94) 100%)',
-          isGhostGirl: false,
+          excerpt: '告白は子供がするものですよ。大人は誘惑してください。猫になるか、虎になるか、雨に濡れた犬になるか。',
+          moodRgb: [184, 134, 98],
+          glowHex: '#6E4B35',
+          isGhost: false,
           isBirthday: false
         },
         {
-          num: '11',
-          month: 'NOV',
-          moodTag: 'LATE AUTUMN RUST',
+          id: '11',
+          monthShort: 'NOV',
+          frameLabel: 'FRAME 11 — NOVEMBER',
           jpTitle: '深まる秋、君という欠かせない絆。',
           enTitle: 'The deepening autumn, bound by your presence.',
-          fragments: [
-            { lang: 'jp', text: '人を好きになった瞬間って、ずーっとずーっと残っていくものだよ。それだけが、生きてく勇気になる。暗闇を照らす、懐中電灯になるよ。' }
-          ],
-          canvasRgb: [158, 92, 68],
-          cardBg: 'radial-gradient(circle at 28% 70%, rgba(164, 92, 66, 0.28) 0%, rgba(56, 32, 24, 0.42) 52%, rgba(14, 13, 12, 0.94) 100%)',
-          isGhostGirl: false,
+          excerpt: 'めぐる季節と、君との記憶。',
+          moodRgb: [164, 118, 92],
+          glowHex: '#5C4134',
+          isGhost: false,
           isBirthday: false
         },
         {
-          num: '12',
-          month: 'DEC',
-          moodTag: 'SILENT WINTER LIGHT',
+          id: '12',
+          monthShort: 'DEC',
+          frameLabel: 'FRAME 12 — DECEMBER',
           jpTitle: '想像の力、あるいは愛。',
           enTitle: 'The power of fantasy, or perhaps love.',
-          fragments: [
-            { lang: 'jp', text: '万有引力とは、ひき合う孤独の力である。' },
-            { lang: 'jp', text: '見えぬけれどもあるんだよ、見えぬものでもあるんだよ。' }
-          ],
-          canvasRgb: [162, 166, 174],
-          cardBg: 'radial-gradient(circle at 50% 18%, rgba(214, 212, 206, 0.22) 0%, rgba(62, 64, 70, 0.32) 50%, rgba(14, 13, 12, 0.94) 100%)',
-          isGhostGirl: false,
+          excerpt: '国境の長いトンネルを抜けると雪国であった。夜の底が白くなった。',
+          moodRgb: [186, 174, 156],
+          glowHex: '#665E52',
+          isGhost: false,
           isBirthday: false
         }
       ];
 
-      const INDIE_FILMS = [
+      const MOVIE_REFERENCES = [
         '夜空はいつでも最高密度の青色だ',
         'きみの鳥はうたえる',
         '旅と日々',
@@ -1126,149 +895,154 @@
         '静かな雨'
       ];
 
-      const RECEIPT_QUOTES = [
-        '人生における、ヨンジュンという名の季節。',
-        'no labels, just me',
-        '日常の中に潜む、君という奇跡。',
-        '時の流れに刻まれた、君という確かな軌跡。',
-        '日常の隙間に落ちた、君という光を拾い集めて。',
-        'めぐる季節と、君との記憶。',
-        'すべてを奪われてもいい、君だけが私の息をさせるから。',
-        'You still shine, 준아 아침은 오잖아 — 겁내지 마',
-        'All I want is for you to hear me as I am, nothing more, nothing less.',
-        'My very presence speaks for me, and it will not be silenced.',
-        '魔法なんでしょ。人生の中でも最高の一日だったらしいじゃない。',
-        '想像の力、あるいは愛。'
+      const SLIP_LINES = [
+        { lang: 'jp', text: '魔法なんでしょ。人生の中でも最高の一日だったらしいじゃない。' },
+        { lang: 'jp', text: '万有引力とは、ひき合う孤独の力である。' },
+        { lang: 'jp', text: '人生における、ヨンジュンという名の季節。' },
+        { lang: 'jp', text: '人を好きになった瞬間って、ずーっとずーっと残っていくものだよ。暗闇を照らす、懐中電灯になるよ。' },
+        { lang: 'jp', text: '現実を忘れて、君という幻影に溺れる。' },
+        { lang: 'jp', text: 'すべてを奪われてもいい、君だけが私の息をさせるから。' },
+        { lang: 'en', text: "You've been chasing highs in all different cities — You still shine." },
+        { lang: 'en', text: "Close my eyes, I don't know if I'd rather be dreamin' or be with you." },
+        { lang: 'en', text: 'All I want is for you to hear me as I am, nothing more, nothing less.' },
+        { lang: 'en', text: 'My very presence speaks for me, and it will not be silenced.' }
       ];
 
-      let currentCardIndex = 0;
-      let isCardTransitioning = false;
-      let isShufflingReel = false;
-      let vellumOpen = false;
-      let receiptPrintCount = 0;
+      let currentSceneIndex = 0;
+      let isSwitchingScene = false;
+      let lastMovieIdx = -1;
+      let lastLineIdx = -1;
+      let printCount = 0;
 
-      /* ==========================================================
-         2. SUBTLE INLINE TOAST HELPER (NO ALERT/CONFIRM)
-         ========================================================== */
+      /* ===========================================================
+         2. SUBTLE TOAST NOTIFICATION HELPER
+         =========================================================== */
       let toastTimer = null;
       const toastEl = document.getElementById('cinemaToast');
 
-      function showToast(msg) {
+      function showToast(message) {
         if (!toastEl) return;
-        toastEl.textContent = msg;
+        toastEl.textContent = message;
         toastEl.classList.remove('opacity-0', 'translate-y-2');
         toastEl.classList.add('opacity-100', 'translate-y-0');
+
         clearTimeout(toastTimer);
         toastTimer = setTimeout(() => {
           toastEl.classList.remove('opacity-100', 'translate-y-0');
           toastEl.classList.add('opacity-0', 'translate-y-2');
-        }, 2500);
+        }, 2600);
       }
 
-      /* ==========================================================
-         3. WEB AUDIO API: VINTAGE SHUTTER CLICK & WARM HARMONIC CHIME
-         ========================================================== */
+      /* ===========================================================
+         3. WEB AUDIO API: 35MM SHUTTER & SOFT THERMAL PAPER-FEED TICK
+         =========================================================== */
       let soundEnabled = false;
       let audioCtx = null;
       const soundToggleBtn = document.getElementById('soundToggleBtn');
       const soundStateLabel = document.getElementById('soundStateLabel');
 
-      function ensureAudioContext() {
+      function initAudioContext() {
         try {
           if (!audioCtx) {
-            const Ctx = window.AudioContext || window.webkitAudioContext;
-            if (Ctx) audioCtx = new Ctx();
+            const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+            if (AudioContextClass) {
+              audioCtx = new AudioContextClass();
+            }
           }
           if (audioCtx && audioCtx.state === 'suspended') {
             audioCtx.resume();
           }
         } catch (err) {
-          // Audio unavailable
+          // AudioContext blocked or unsupported
         }
       }
 
-      function playShutterClick(soft = false) {
+      function playShutterSound(soft = false) {
         if (!soundEnabled) return;
         try {
-          ensureAudioContext();
+          initAudioContext();
           if (!audioCtx) return;
 
           const now = audioCtx.currentTime;
-          const vol = soft ? 0.35 : 0.72;
+          const volumeScale = soft ? 0.45 : 0.75;
 
-          // Mechanical shutter blade impulse (filtered noise)
-          const bufLen = Math.floor(audioCtx.sampleRate * 0.042);
-          const buf = audioCtx.createBuffer(1, bufLen, audioCtx.sampleRate);
-          const ch = buf.getChannelData(0);
-          for (let i = 0; i < bufLen; i++) {
-            const decay = Math.exp(-i / (bufLen * 0.17));
-            ch[i] = (Math.random() * 2 - 1) * decay;
+          const bufferSize = Math.floor(audioCtx.sampleRate * 0.045);
+          const noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+          const output = noiseBuffer.getChannelData(0);
+          for (let i = 0; i < bufferSize; i++) {
+            const env = Math.exp(-i / (bufferSize * 0.18));
+            output[i] = (Math.random() * 2 - 1) * env;
           }
 
-          const src = audioCtx.createBufferSource();
-          src.buffer = buf;
+          const noise = audioCtx.createBufferSource();
+          noise.buffer = noiseBuffer;
 
-          const filter = audioCtx.createBiquadFilter();
-          filter.type = 'bandpass';
-          filter.frequency.setValueAtTime(1750, now);
-          filter.Q.setValueAtTime(1.5, now);
+          const bandpass = audioCtx.createBiquadFilter();
+          bandpass.type = 'bandpass';
+          bandpass.frequency.setValueAtTime(1650, now);
+          bandpass.Q.setValueAtTime(1.4, now);
 
-          const gain = audioCtx.createGain();
-          gain.gain.setValueAtTime(0.24 * vol, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
+          const noiseGain = audioCtx.createGain();
+          noiseGain.gain.setValueAtTime(0.22 * volumeScale, now);
+          noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.042);
 
-          src.connect(filter);
-          filter.connect(gain);
-          gain.connect(audioCtx.destination);
-          src.start(now);
+          noise.connect(bandpass);
+          bandpass.connect(noiseGain);
+          noiseGain.connect(audioCtx.destination);
+          noise.start(now);
 
-          // Soft low curtain thud
           const osc = audioCtx.createOscillator();
           const oscGain = audioCtx.createGain();
           osc.type = 'triangle';
-          osc.frequency.setValueAtTime(140, now + 0.018);
-          osc.frequency.exponentialRampToValueAtTime(48, now + 0.056);
+          osc.frequency.setValueAtTime(145, now + 0.022);
+          osc.frequency.exponentialRampToValueAtTime(52, now + 0.058);
 
           oscGain.gain.setValueAtTime(0.0001, now);
-          oscGain.gain.setValueAtTime(0.14 * vol, now + 0.018);
-          oscGain.gain.exponentialRampToValueAtTime(0.0008, now + 0.06);
+          oscGain.gain.setValueAtTime(0.14 * volumeScale, now + 0.022);
+          oscGain.gain.exponentialRampToValueAtTime(0.0008, now + 0.062);
 
           osc.connect(oscGain);
           oscGain.connect(audioCtx.destination);
-          osc.start(now + 0.016);
-          osc.stop(now + 0.065);
+          osc.start(now + 0.02);
+          osc.stop(now + 0.068);
         } catch (err) {
-          // Ignore sound playback errors
+          // Safely ignore audio playback errors
         }
       }
 
-      function playWarmChime() {
+      function playPaperTick() {
         if (!soundEnabled) return;
         try {
-          ensureAudioContext();
+          initAudioContext();
           if (!audioCtx) return;
 
           const now = audioCtx.currentTime;
-          // Warm vintage major-9th arpeggio (D4, F#4, A4, E5)
-          const notes = [293.66, 369.99, 440.0, 659.25];
-          notes.forEach((freq, idx) => {
-            const t = now + idx * 0.085;
-            const osc = audioCtx.createOscillator();
+          [0, 0.09, 0.18, 0.28].forEach((offset, idx) => {
+            const t = now + offset;
+            const bufLen = Math.floor(audioCtx.sampleRate * 0.018);
+            const buf = audioCtx.createBuffer(1, bufLen, audioCtx.sampleRate);
+            const ch = buf.getChannelData(0);
+            for (let i = 0; i < bufLen; i++) {
+              ch[i] = (Math.random() * 2 - 1) * Math.exp(-i / (bufLen * 0.25));
+            }
+            const src = audioCtx.createBufferSource();
+            src.buffer = buf;
+
+            const filter = audioCtx.createBiquadFilter();
+            filter.type = 'highpass';
+            filter.frequency.setValueAtTime(2400, t);
+
             const gain = audioCtx.createGain();
-            osc.type = 'sine';
-            osc.frequency.setValueAtTime(freq, t);
+            gain.gain.setValueAtTime(idx === 3 ? 0.08 : 0.055, t);
+            gain.gain.exponentialRampToValueAtTime(0.0008, t + 0.018);
 
-            gain.gain.setValueAtTime(0.0001, t);
-            gain.gain.linearRampToValueAtTime(0.065 / (1 + idx * 0.15), t + 0.03);
-            gain.gain.exponentialRampToValueAtTime(0.0005, t + 1.35);
-
-            osc.connect(gain);
+            src.connect(filter);
+            filter.connect(gain);
             gain.connect(audioCtx.destination);
-            osc.start(t);
-            osc.stop(t + 1.4);
+            src.start(t);
           });
         } catch (err) {
-          // Ignore sound playback errors
+          // Ignore playback error
         }
       }
 
@@ -1277,49 +1051,51 @@
           soundEnabled = !soundEnabled;
           soundStateLabel.textContent = soundEnabled ? 'ON' : 'OFF';
           if (soundEnabled) {
-            ensureAudioContext();
-            playShutterClick(false);
-            showToast('SOUND: ON · SHUTTER & CHIME');
+            initAudioContext();
+            playShutterSound(false);
+            showToast('35MM SHUTTER AUDIO: ON');
           } else {
-            showToast('SOUND: OFF');
+            showToast('35MM SHUTTER AUDIO: OFF');
           }
         });
       }
 
-      /* ==========================================================
-         4. ATMOSPHERIC CANVAS ("DOOR WIDE OPEN" SLIT + HALOS + 35MM GRAIN)
-         ========================================================== */
+      /* ===========================================================
+         4. AMBIENT "DOOR WIDE OPEN" WARM LIGHT CANVAS + 35MM GRAIN
+         =========================================================== */
       const lightCanvas = document.getElementById('lightCanvas');
       const lightCtx = lightCanvas ? lightCanvas.getContext('2d') : null;
       const grainCanvas = document.getElementById('grainCanvas');
       const grainCtx = grainCanvas ? grainCanvas.getContext('2d') : null;
 
-      let targetRgb = [200, 169, 126]; // Initial warm vintage gold
+      // Default hero warm aged gold RGB
+      let targetRgb = [200, 169, 126];
       let currentRgb = [200, 169, 126];
+
+      // Subtle pointer/touch parallax coordinates (-0.5 to 0.5)
       let targetPointerX = 0;
       let targetPointerY = 0;
       let pointerX = 0;
       let pointerY = 0;
-      let noiseTile = null;
-      let lastGrainTick = 0;
-      const bootTime = performance.now();
 
-      function createNoiseTile() {
-        const c = document.createElement('canvas');
-        c.width = 160;
-        c.height = 160;
-        const ctx = c.getContext('2d');
-        const img = ctx.createImageData(160, 160);
-        const d = img.data;
-        for (let i = 0; i < d.length; i += 4) {
+      // Offscreen noise tile for authentic 35mm grain
+      let noisePatternCanvas = null;
+      function buildNoiseTile() {
+        const tile = document.createElement('canvas');
+        tile.width = 160;
+        tile.height = 160;
+        const tCtx = tile.getContext('2d');
+        const imgData = tCtx.createImageData(160, 160);
+        const data = imgData.data;
+        for (let i = 0; i < data.length; i += 4) {
           const v = Math.floor(Math.random() * 255);
-          d[i] = v;
-          d[i + 1] = v;
-          d[i + 2] = v;
-          d[i + 3] = 255;
+          data[i] = v;
+          data[i + 1] = v;
+          data[i + 2] = v;
+          data[i + 3] = 255;
         }
-        ctx.putImageData(img, 0, 0);
-        return c;
+        tCtx.putImageData(imgData, 0, 0);
+        return tile;
       }
 
       function resizeCanvases() {
@@ -1337,91 +1113,101 @@
           grainCanvas.width = Math.floor(w);
           grainCanvas.height = Math.floor(h);
         } catch (err) {
-          // Handle resize gracefully
+          // Safe resize fallback
         }
       }
 
       window.addEventListener('pointermove', (e) => {
-        targetPointerX = Math.max(-0.5, Math.min(0.5, (e.clientX / window.innerWidth) - 0.5));
-        targetPointerY = Math.max(-0.5, Math.min(0.5, (e.clientY / window.innerHeight) - 0.5));
+        const nx = (e.clientX / window.innerWidth) - 0.5;
+        const ny = (e.clientY / window.innerHeight) - 0.5;
+        targetPointerX = Math.max(-0.5, Math.min(0.5, nx));
+        targetPointerY = Math.max(-0.5, Math.min(0.5, ny));
       }, { passive: true });
 
       window.addEventListener('touchmove', (e) => {
         if (e.touches && e.touches[0]) {
-          targetPointerX = Math.max(-0.5, Math.min(0.5, (e.touches[0].clientX / window.innerWidth) - 0.5));
-          targetPointerY = Math.max(-0.5, Math.min(0.5, (e.touches[0].clientY / window.innerHeight) - 0.5));
+          const nx = (e.touches[0].clientX / window.innerWidth) - 0.5;
+          const ny = (e.touches[0].clientY / window.innerHeight) - 0.5;
+          targetPointerX = Math.max(-0.5, Math.min(0.5, nx));
+          targetPointerY = Math.max(-0.5, Math.min(0.5, ny));
         }
       }, { passive: true });
 
-      function animateBackdrop(now) {
-        requestAnimationFrame(animateBackdrop);
+      let lastGrainTick = 0;
+      const startTime = performance.now();
+
+      function renderLoop(now) {
+        requestAnimationFrame(renderLoop);
         if (!lightCtx || !lightCanvas) return;
 
-        const t = (now - bootTime) * 0.001;
+        const elapsed = (now - startTime) * 0.001;
         const dpr = Math.min(window.devicePixelRatio || 1, 2);
         const w = lightCanvas.width / dpr;
         const h = lightCanvas.height / dpr;
 
         for (let i = 0; i < 3; i++) {
-          currentRgb[i] += (targetRgb[i] - currentRgb[i]) * 0.032;
+          currentRgb[i] += (targetRgb[i] - currentRgb[i]) * 0.035;
         }
-        pointerX += (targetPointerX - pointerX) * 0.038;
-        pointerY += (targetPointerY - pointerY) * 0.038;
+        pointerX += (targetPointerX - pointerX) * 0.04;
+        pointerY += (targetPointerY - pointerY) * 0.04;
 
         const r = Math.round(currentRgb[0]);
         const g = Math.round(currentRgb[1]);
         const b = Math.round(currentRgb[2]);
 
-        // Warm film-stock charcoal base
+        // Warm film charcoal base
         lightCtx.fillStyle = '#0E0D0C';
         lightCtx.fillRect(0, 0, w, h);
 
-        // 1. Slow-breathing "Door Wide Open" vertical slit of warm film light
-        const breath = 0.5 + 0.5 * Math.sin(t * 0.52);
-        const slitX = w * 0.5 + pointerX * 24 + Math.sin(t * 0.25) * 9;
-        const slitHalf = w * (0.14 + breath * 0.042);
+        // 1. "Door Wide Open" breathing vertical light sliver
+        const breath = 0.5 + 0.5 * Math.sin(elapsed * 0.55);
+        const sliverCenterX = w * 0.5 + pointerX * 24 + Math.sin(elapsed * 0.28) * 9;
+        const sliverHalfWidth = w * (0.15 + breath * 0.04);
 
-        const slitGrad = lightCtx.createLinearGradient(slitX - slitHalf, 0, slitX + slitHalf, 0);
-        slitGrad.addColorStop(0, `rgba(${r}, ${g}, ${b}, 0)`);
-        slitGrad.addColorStop(0.42, `rgba(${r}, ${g}, ${b}, ${0.08 + breath * 0.038})`);
-        slitGrad.addColorStop(0.5, `rgba(242, 236, 225, ${0.068 + breath * 0.032})`);
-        slitGrad.addColorStop(0.58, `rgba(${r}, ${g}, ${b}, ${0.08 + breath * 0.038})`);
-        slitGrad.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
+        const sliverGrad = lightCtx.createLinearGradient(
+          sliverCenterX - sliverHalfWidth, 0,
+          sliverCenterX + sliverHalfWidth, 0
+        );
+        sliverGrad.addColorStop(0, `rgba(${r}, ${g}, ${b}, 0)`);
+        sliverGrad.addColorStop(0.42, `rgba(${r}, ${g}, ${b}, ${0.07 + breath * 0.035})`);
+        sliverGrad.addColorStop(0.5, `rgba(242, 236, 225, ${0.055 + breath * 0.03})`);
+        sliverGrad.addColorStop(0.58, `rgba(${r}, ${g}, ${b}, ${0.07 + breath * 0.035})`);
+        sliverGrad.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
 
-        lightCtx.fillStyle = slitGrad;
+        lightCtx.fillStyle = sliverGrad;
         lightCtx.fillRect(0, 0, w, h);
 
-        // 2. Drifting darkroom halo (primary active month color temperature)
-        const h1x = w * 0.72 + Math.cos(t * 0.22) * 40 - pointerX * 30;
-        const h1y = h * 0.28 + Math.sin(t * 0.18) * 34 - pointerY * 24;
-        const h1r = Math.max(w, h) * 0.44;
-        const g1 = lightCtx.createRadialGradient(h1x, h1y, 0, h1x, h1y, h1r);
-        g1.addColorStop(0, `rgba(${r}, ${g}, ${b}, 0.22)`);
-        g1.addColorStop(0.55, `rgba(${r}, ${g}, ${b}, 0.06)`);
-        g1.addColorStop(1, 'rgba(14, 13, 12, 0)');
-        lightCtx.fillStyle = g1;
+        // 2. Drifting upper-right warm glow
+        const orb1X = w * 0.72 + Math.cos(elapsed * 0.24) * 42 - pointerX * 32;
+        const orb1Y = h * 0.26 + Math.sin(elapsed * 0.19) * 36 - pointerY * 26;
+        const orb1Radius = Math.max(w, h) * 0.44;
+        const orb1Grad = lightCtx.createRadialGradient(orb1X, orb1Y, 0, orb1X, orb1Y, orb1Radius);
+        orb1Grad.addColorStop(0, `rgba(${r}, ${g}, ${b}, 0.17)`);
+        orb1Grad.addColorStop(0.55, `rgba(${r}, ${g}, ${b}, 0.045)`);
+        orb1Grad.addColorStop(1, 'rgba(14, 13, 12, 0)');
+        lightCtx.fillStyle = orb1Grad;
         lightCtx.fillRect(0, 0, w, h);
 
-        // 3. Secondary warm espresso shadow counterweight halo
-        const h2x = w * 0.24 + Math.sin(t * 0.17) * 34 + pointerX * 20;
-        const h2y = h * 0.74 + Math.cos(t * 0.21) * 38 + pointerY * 22;
-        const h2r = Math.max(w, h) * 0.46;
-        const g2 = lightCtx.createRadialGradient(h2x, h2y, 0, h2x, h2y, h2r);
-        g2.addColorStop(0, 'rgba(92, 68, 46, 0.2)');
-        g2.addColorStop(0.6, 'rgba(42, 32, 24, 0.06)');
-        g2.addColorStop(1, 'rgba(14, 13, 12, 0)');
-        lightCtx.fillStyle = g2;
+        // 3. Lower-left warm dark sepia/shadow counterweight
+        const orb2X = w * 0.22 + Math.sin(elapsed * 0.18) * 34 + pointerX * 22;
+        const orb2Y = h * 0.74 + Math.cos(elapsed * 0.22) * 40 + pointerY * 22;
+        const orb2Radius = Math.max(w, h) * 0.48;
+        const orb2Grad = lightCtx.createRadialGradient(orb2X, orb2Y, 0, orb2X, orb2Y, orb2Radius);
+        orb2Grad.addColorStop(0, 'rgba(64, 48, 34, 0.24)');
+        orb2Grad.addColorStop(0.6, 'rgba(46, 35, 26, 0.07)');
+        orb2Grad.addColorStop(1, 'rgba(14, 13, 12, 0)');
+        lightCtx.fillStyle = orb2Grad;
         lightCtx.fillRect(0, 0, w, h);
 
-        // 4. Fine animated 35mm film grain (~12fps refresh)
-        if (grainCtx && noiseTile && (now - lastGrainTick > 85)) {
+        // 4. Subtle ~12fps 35mm film grain shift
+        if (grainCtx && noisePatternCanvas && (now - lastGrainTick > 85)) {
           lastGrainTick = now;
           const gw = grainCanvas.width;
           const gh = grainCanvas.height;
           const ox = -Math.floor(Math.random() * 140);
           const oy = -Math.floor(Math.random() * 140);
           grainCtx.clearRect(0, 0, gw, gh);
-          const pat = grainCtx.createPattern(noiseTile, 'repeat');
+          const pat = grainCtx.createPattern(noisePatternCanvas, 'repeat');
           if (pat) {
             grainCtx.save();
             grainCtx.translate(ox, oy);
@@ -1432,391 +1218,244 @@
         }
       }
 
-      /* ==========================================================
-         5. HERO INTERACTIVE TAGLINE SWITCHER (4 OFFICIAL TAGLINES)
-         ========================================================== */
-      let taglineIdx = 0;
-      const taglineBtn = document.getElementById('taglineSwitcherBtn');
-      const heroTaglineText = document.getElementById('heroTaglineText');
-      const heroTaglineHint = document.getElementById('heroTaglineHint');
+      /* ===========================================================
+         5. INTERACTIVE 35MM SCENE VIEWFINDER (12 MONTHS)
+         =========================================================== */
+      const viewfinderEl = document.getElementById('sceneViewfinder');
+      const shutterFlashEl = document.getElementById('shutterFlash');
+      const frameMoodGlowEl = document.getElementById('frameMoodGlow');
+      const sceneContentEl = document.getElementById('sceneContent');
+      const sceneCounterEl = document.getElementById('sceneCounter');
+      const sceneBadgeGhostEl = document.getElementById('sceneBadgeGhost');
+      const sceneBadgeBirthdayEl = document.getElementById('sceneBadgeBirthday');
+      const sceneMonthTagEl = document.getElementById('sceneMonthTag');
+      const sceneCodeLineEl = document.getElementById('sceneCodeLine');
+      const sceneJpTitleEl = document.getElementById('sceneJpTitle');
+      const sceneEnTitleEl = document.getElementById('sceneEnTitle');
+      const sceneDividerEl = document.getElementById('sceneDivider');
+      const sceneExcerptEl = document.getElementById('sceneExcerpt');
+      const frameDotsEl = document.getElementById('frameDots');
+      const randomSceneBtn = document.getElementById('randomSceneBtn');
+      const nextSceneBtn = document.getElementById('nextSceneBtn');
 
-      if (taglineBtn && heroTaglineText && heroTaglineHint) {
-        taglineBtn.addEventListener('click', () => {
-          playShutterClick(true);
-          heroTaglineText.classList.add('is-switching');
-          setTimeout(() => {
-            taglineIdx = (taglineIdx + 1) % HERO_TAGLINES.length;
-            heroTaglineText.textContent = HERO_TAGLINES[taglineIdx];
-            heroTaglineHint.textContent = `[ TAP TEXT · 0${taglineIdx + 1}/04 ]`;
-            heroTaglineText.classList.remove('is-switching');
-          }, 190);
+      function buildFrameDots() {
+        if (!frameDotsEl) return;
+        frameDotsEl.innerHTML = '';
+        SCENES.forEach((sc, idx) => {
+          const bar = document.createElement('button');
+          bar.type = 'button';
+          bar.setAttribute('role', 'tab');
+          bar.setAttribute('aria-label', `Select Scene ${sc.id} ${sc.monthShort}`);
+          bar.className = 'h-[2px] flex-1 transition-all duration-500 rounded-full focus:outline-none ' +
+            (idx === currentSceneIndex
+              ? (sc.isGhost ? 'bg-[#B34A58]' : 'bg-aged-gold')
+              : 'bg-cream-paper/15 hover:bg-aged-gold/45');
+          bar.addEventListener('click', () => switchScene(idx));
+          frameDotsEl.appendChild(bar);
         });
       }
 
-      /* ==========================================================
-         6. SECTION 2: 12 MONTHLY CARDS + VELLUM OVERLAY + REEL SHUFFLE
-         ========================================================== */
-      const cardStage = document.getElementById('cardStage');
-      const shutterFlash = document.getElementById('shutterFlash');
-      const cardMoodBg = document.getElementById('cardMoodBg');
-      const ghostGirlVisual = document.getElementById('ghostGirlVisual');
-      const birthdayStamp = document.getElementById('birthdayStamp');
-      const cardSceneMeta = document.getElementById('cardSceneMeta');
-      const cardMonthOrdinal = document.getElementById('cardMonthOrdinal');
-      const cardMoodTag = document.getElementById('cardMoodTag');
-      const cardJpTitle = document.getElementById('cardJpTitle');
-      const cardEnTitle = document.getElementById('cardEnTitle');
-      const cardMainCopy = document.getElementById('cardMainCopy');
-
-      const vellumToggleBtn = document.getElementById('vellumToggleBtn');
-      const vellumBtnLabel = document.getElementById('vellumBtnLabel');
-      const vellumSheet = document.getElementById('vellumSheet');
-      const vellumSceneCode = document.getElementById('vellumSceneCode');
-      const vellumFragments = document.getElementById('vellumFragments');
-
-      const prevCardBtn = document.getElementById('prevCardBtn');
-      const nextCardBtn = document.getElementById('nextCardBtn');
-      const drawChanceBtn = document.getElementById('drawChanceBtn');
-      const monthIndexBar = document.getElementById('monthIndexBar');
-
-      function setVellumState(open) {
-        vellumOpen = open;
-        if (vellumSheet) {
-          vellumSheet.classList.toggle('is-open', open);
-          vellumSheet.setAttribute('aria-hidden', String(!open));
-        }
-        if (vellumToggleBtn) {
-          vellumToggleBtn.setAttribute('aria-expanded', String(open));
-        }
-        if (vellumBtnLabel) {
-          vellumBtnLabel.innerHTML = open
-            ? '<span class="font-jp-serif tracking-[0.14em]">閉じる</span> / CLOSE VELLUM'
-            : '<span class="font-jp-serif tracking-[0.14em]">透かす</span> / VELLUM FRAGMENT';
+      function updateFrameDots() {
+        if (!frameDotsEl) return;
+        const children = frameDotsEl.children;
+        for (let i = 0; i < children.length; i++) {
+          const isCurrent = i === currentSceneIndex;
+          const isGhost = SCENES[i].isGhost;
+          children[i].setAttribute('aria-selected', String(isCurrent));
+          children[i].className = 'h-[2px] flex-1 transition-all duration-500 rounded-full focus:outline-none ' +
+            (isCurrent
+              ? (isGhost ? 'bg-[#B34A58]' : 'bg-aged-gold')
+              : 'bg-cream-paper/15 hover:bg-aged-gold/45');
         }
       }
 
-      if (vellumToggleBtn) {
-        vellumToggleBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          playShutterClick(true);
-          setVellumState(!vellumOpen);
-        });
-      }
+      function renderSceneInstant(index, updateAmbient = true) {
+        const scene = SCENES[index];
 
-      function buildMonthIndexBar() {
-        if (!monthIndexBar) return;
-        monthIndexBar.innerHTML = '';
-        MONTHLY_CARDS.forEach((card, idx) => {
-          const btn = document.createElement('button');
-          btn.type = 'button';
-          btn.setAttribute('role', 'tab');
-          btn.setAttribute('aria-label', `Month ${card.num} ${card.month}`);
-          btn.className = 'relative py-2 rounded-[2px] font-mono-meta text-[9px] tracking-[0.04em] transition-all focus:outline-none flex flex-col items-center justify-center';
-          btn.innerHTML = `<span>${card.num}</span>${card.isBirthday ? '<span class="w-1 h-1 rounded-full bg-vintage-gold mt-0.5"></span>' : ''}`;
-          btn.addEventListener('click', () => {
-            if (!isShufflingReel) switchMonthlyCard(idx);
-          });
-          monthIndexBar.appendChild(btn);
-        });
-      }
+        sceneCounterEl.textContent = `SCENE ${scene.id} / 12`;
+        sceneMonthTagEl.textContent = `${scene.monthShort} · 2027`;
+        sceneCodeLineEl.textContent = scene.frameLabel;
+        sceneJpTitleEl.textContent = scene.jpTitle;
+        sceneEnTitleEl.textContent = scene.enTitle;
+        sceneExcerptEl.textContent = scene.excerpt;
 
-      function updateMonthIndexBar() {
-        if (!monthIndexBar) return;
-        const buttons = monthIndexBar.children;
-        for (let i = 0; i < buttons.length; i++) {
-          const active = i === currentCardIndex;
-          const isMay = MONTHLY_CARDS[i].isGhostGirl;
-          buttons[i].setAttribute('aria-selected', String(active));
-          if (active) {
-            buttons[i].className = 'relative py-2 rounded-[2px] font-mono-meta text-[9.5px] font-medium tracking-[0.04em] transition-all focus:outline-none flex flex-col items-center justify-center ' +
-              (isMay
-                ? 'bg-faded-crimson/35 text-cream-paper border border-faded-crimson/70'
-                : 'bg-vintage-gold/25 text-cream-paper border border-vintage-gold/65');
-          } else {
-            buttons[i].className = 'relative py-2 rounded-[2px] font-mono-meta text-[9px] tracking-[0.04em] text-warm-muted/75 hover:text-cream-paper hover:bg-cream-paper/[0.05] border border-transparent transition-all focus:outline-none flex flex-col items-center justify-center';
-          }
-        }
-      }
-
-      function populateVellumFragments(card) {
-        if (!vellumFragments) return;
-        vellumFragments.innerHTML = '';
-        card.fragments.forEach((frag, idx) => {
-          const block = document.createElement('div');
-          if (idx > 0) {
-            block.className = 'pt-3.5 border-t border-cream-paper/15';
-          }
-          const p = document.createElement('p');
-          if (frag.lang === 'en') {
-            p.className = 'font-en-serif italic text-[15.5px] leading-[1.7] tracking-[0.03em] text-cream-paper/95 whitespace-pre-line';
-          } else {
-            p.className = 'font-jp-serif text-[12.5px] leading-[2.0] tracking-[0.09em] text-cream-paper/95 whitespace-pre-line';
-          }
-          p.textContent = frag.text;
-          block.appendChild(p);
-          vellumFragments.appendChild(block);
-        });
-      }
-
-      function renderMonthlyCard(index, updateAmbient = true) {
-        const card = MONTHLY_CARDS[index];
-        cardSceneMeta.textContent = `SCENE ${card.num} / ${card.month}`;
-        cardMonthOrdinal.textContent = `No. ${card.num}`;
-        cardMoodTag.textContent = card.moodTag;
-        cardJpTitle.textContent = card.jpTitle;
-        cardEnTitle.textContent = card.enTitle;
-        vellumSceneCode.textContent = `${card.num} / ${card.month}`;
-
-        // Update darkroom lighting mood & special Month 05 / Month 09 visuals
-        cardMoodBg.style.background = card.cardBg;
-
-        if (card.isGhostGirl) {
-          ghostGirlVisual.classList.remove('opacity-0');
-          ghostGirlVisual.classList.add('opacity-100');
-          cardStage.style.borderColor = 'rgba(158, 59, 51, 0.55)';
-          cardSceneMeta.style.color = '#D8726A';
+        // Toggle May 05 Ghost Girl crimson accent & Sep 09 Birthday aged-gold badge
+        } else if (scene.isBirthday) {
+          sceneBadgeGhostEl.classList.add('hidden');
+          sceneBadgeBirthdayEl.classList.remove('hidden');
+          viewfinderEl.style.borderColor = 'rgba(200, 169, 126, 0.42)';
+          viewfinderEl.style.boxShadow = '0 16px 46px rgba(0, 0, 0, 0.55)';
+          sceneCodeLineEl.style.color = 'rgba(200, 169, 126, 0.9)';
+          sceneDividerEl.style.backgroundColor = 'rgba(200, 169, 126, 0.45)';
         } else {
-          ghostGirlVisual.classList.add('opacity-0');
-          ghostGirlVisual.classList.remove('opacity-100');
-          cardStage.style.borderColor = card.isBirthday
-            ? 'rgba(200, 169, 126, 0.48)'
-            : 'rgba(242, 236, 225, 0.16)';
-          cardSceneMeta.style.color = '#C8A97E';
+          sceneBadgeGhostEl.classList.add('hidden');
+          sceneBadgeBirthdayEl.classList.add('hidden');
+          viewfinderEl.style.borderColor = 'rgba(242, 236, 225, 0.14)';
+          viewfinderEl.style.boxShadow = 'none';
+          sceneCodeLineEl.style.color = 'rgba(200, 169, 126, 0.85)';
+          sceneDividerEl.style.backgroundColor = 'rgba(200, 169, 126, 0.35)';
         }
 
-        if (birthdayStamp) {
-          birthdayStamp.classList.toggle('hidden', !card.isBirthday);
-        }
-
-        populateVellumFragments(card);
-        updateMonthIndexBar();
+        frameMoodGlowEl.style.background = `radial-gradient(circle at 75% 25%, ${scene.glowHex} 0%, transparent 68%)`;
 
         if (updateAmbient) {
-          targetRgb = card.canvasRgb;
+          targetRgb = scene.moodRgb;
         }
+
+        updateFrameDots();
       }
 
-      function fireShutterFlash() {
-        if (!shutterFlash) return;
-        shutterFlash.classList.remove('shutter-flash-active');
-        void shutterFlash.offsetWidth;
-        shutterFlash.classList.add('shutter-flash-active');
+      function triggerShutterFlash() {
+        if (!shutterFlashEl) return;
+        shutterFlashEl.classList.remove('shutter-flash-active');
+        void shutterFlashEl.offsetWidth;
+        shutterFlashEl.classList.add('shutter-flash-active');
       }
 
-      function switchMonthlyCard(targetIdx) {
-        if (isCardTransitioning || targetIdx === currentCardIndex) return;
-        isCardTransitioning = true;
+      function switchScene(nextIndex) {
+        if (isSwitchingScene || nextIndex === currentSceneIndex) return;
+        isSwitchingScene = true;
 
-        playShutterClick(false);
-        fireShutterFlash();
-        if (vellumOpen) setVellumState(false);
+        playShutterSound(false);
+        triggerShutterFlash();
+        sceneContentEl.classList.add('is-switching');
 
-        cardMainCopy.classList.add('is-switching');
         setTimeout(() => {
-          currentCardIndex = targetIdx;
-          renderMonthlyCard(currentCardIndex, true);
-          cardMainCopy.classList.remove('is-switching');
+          currentSceneIndex = nextIndex;
+          renderSceneInstant(currentSceneIndex, true);
+          sceneContentEl.classList.remove('is-switching');
           setTimeout(() => {
-            isCardTransitioning = false;
-          }, 180);
-        }, 190);
+            isSwitchingScene = false;
+          }, 220);
+        }, 210);
       }
 
-      function goNextCard() {
-        if (isShufflingReel) return;
-        switchMonthlyCard((currentCardIndex + 1) % MONTHLY_CARDS.length);
+      function goNextScene() {
+        switchScene((currentSceneIndex + 1) % SCENES.length);
       }
 
-      function goPrevCard() {
-        if (isShufflingReel) return;
-        switchMonthlyCard((currentCardIndex - 1 + MONTHLY_CARDS.length) % MONTHLY_CARDS.length);
+      function goPrevScene() {
+        switchScene((currentSceneIndex - 1 + SCENES.length) % SCENES.length);
       }
 
-      // Rapid 35mm Reel-Shuffle Animation ("偶然を引く / DRAW BY CHANCE")
-      function triggerReelShuffle() {
-        if (isShufflingReel || isCardTransitioning) return;
-        isShufflingReel = true;
-        if (vellumOpen) setVellumState(false);
-
-        // Pick a guaranteed different target month
-        let finalIdx = currentCardIndex;
-        while (finalIdx === currentCardIndex) {
-          finalIdx = Math.floor(Math.random() * MONTHLY_CARDS.length);
+      function goRandomScene() {
+        let randIdx = currentSceneIndex;
+        while (randIdx === currentSceneIndex) {
+          randIdx = Math.floor(Math.random() * SCENES.length);
         }
-
-        // Progressive decelerating intervals mimicking a 35mm film reel slowing down
-        const stepDelays = [55, 60, 68, 78, 92, 112, 140, 180, 235];
-        let step = 0;
-
-        function nextReelTick() {
-          if (step < stepDelays.length) {
-            const tempIdx = (currentCardIndex + 1 + Math.floor(Math.random() * 3)) % MONTHLY_CARDS.length;
-            currentCardIndex = tempIdx;
-            renderMonthlyCard(currentCardIndex, false);
-            playShutterClick(true);
-            const wait = stepDelays[step];
-            step++;
-            setTimeout(nextReelTick, wait);
-          } else {
-            // Land on final random month with shutter flash
-            currentCardIndex = finalIdx;
-            fireShutterFlash();
-            playShutterClick(false);
-            renderMonthlyCard(currentCardIndex, true);
-            isShufflingReel = false;
-            showToast(`DRAWN: SCENE ${MONTHLY_CARDS[finalIdx].num} / ${MONTHLY_CARDS[finalIdx].month}`);
-          }
-        }
-
-        nextReelTick();
+        switchScene(randIdx);
       }
 
-      if (prevCardBtn) prevCardBtn.addEventListener('click', goPrevCard);
-      if (nextCardBtn) nextCardBtn.addEventListener('click', goNextCard);
-      if (drawChanceBtn) drawChanceBtn.addEventListener('click', triggerReelShuffle);
+      if (nextSceneBtn) nextSceneBtn.addEventListener('click', goNextScene);
+      if (randomSceneBtn) randomSceneBtn.addEventListener('click', goRandomScene);
 
-      // Touch Horizontal Swipe on Card Stage
-      if (cardStage) {
+      // Tap & Horizontal Swipe Gestures on Viewfinder
+      if (viewfinderEl) {
         let touchStartX = 0;
         let touchStartY = 0;
+        let didSwipe = false;
 
-        cardStage.addEventListener('touchstart', (e) => {
+        viewfinderEl.addEventListener('touchstart', (e) => {
           if (e.touches && e.touches[0]) {
             touchStartX = e.touches[0].clientX;
             touchStartY = e.touches[0].clientY;
+            didSwipe = false;
           }
         }, { passive: true });
 
-        cardStage.addEventListener('touchend', (e) => {
-          if (!e.changedTouches || !e.changedTouches[0] || isShufflingReel) return;
+        viewfinderEl.addEventListener('touchend', (e) => {
+          if (!e.changedTouches || !e.changedTouches[0]) return;
           const dx = e.changedTouches[0].clientX - touchStartX;
           const dy = e.changedTouches[0].clientY - touchStartY;
 
-          if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.25) {
-            if (dx < 0) goNextCard();
-            else goPrevCard();
+          if (Math.abs(dx) > 38 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+            didSwipe = true;
+            if (dx < 0) {
+              goNextScene();
+            } else {
+              goPrevScene();
+            }
           }
         }, { passive: true });
-      }
 
-      /* ==========================================================
-         7. SECTION 3: COLLECTION ARCHIVE ACCORDION
-         ========================================================== */
-      const archiveItems = document.querySelectorAll('.archive-item');
-      archiveItems.forEach((item) => {
-        const trigger = item.querySelector('.archive-trigger');
-        if (!trigger) return;
-
-        trigger.addEventListener('click', () => {
-          const currentlyOpen = item.getAttribute('data-open') === 'true';
-          archiveItems.forEach((other) => {
-            if (other !== item) {
-              other.setAttribute('data-open', 'false');
-              const btn = other.querySelector('.archive-trigger');
-              if (btn) btn.setAttribute('aria-expanded', 'false');
-            }
-          });
-          const next = !currentlyOpen;
-          item.setAttribute('data-open', String(next));
-          trigger.setAttribute('aria-expanded', String(next));
-          playShutterClick(true);
-        });
-      });
-
-      /* ==========================================================
-         8. SECTION 4: RETRO THERMAL COINCIDENCE RECEIPT GENERATOR
-         ========================================================== */
-      const printReceiptBtn = document.getElementById('printReceiptBtn');
-      const reprintReceiptBtn = document.getElementById('reprintReceiptBtn');
-      const receiptIntroBox = document.getElementById('receiptIntroBox');
-      const printerSlotLip = document.getElementById('printerSlotLip');
-      const receiptViewport = document.getElementById('receiptViewport');
-      const receiptPaperCard = document.getElementById('receiptPaperCard');
-      const reprintWrap = document.getElementById('reprintWrap');
-
-      const receiptSerialEl = document.getElementById('receiptSerial');
-      const receiptDateTimeEl = document.getElementById('receiptDateTime');
-      const receiptFilmEl = document.getElementById('receiptFilm');
-      const receiptQuoteEl = document.getElementById('receiptQuote');
-      const receiptBarcodeEl = document.getElementById('receiptBarcode');
-      const receiptBarcodeTextEl = document.getElementById('receiptBarcodeText');
-
-      let lastFilmIdx = -1;
-      let lastQuoteIdx = -1;
-
-      function formatNowTimestamp() {
-        const d = new Date();
-        const yyyy = d.getFullYear();
-        const mm = String(d.getMonth() + 1).padStart(2, '0');
-        const dd = String(d.getDate()).padStart(2, '0');
-        const hh = String(d.getHours()).padStart(2, '0');
-        const mi = String(d.getMinutes()).padStart(2, '0');
-        return `${yyyy}.${mm}.${dd} ${hh}:${mi}`;
-      }
-
-      function renderThermalBarcode(seedNum) {
-        if (!receiptBarcodeEl) return;
-        let svgContent = '';
-        let x = 6;
-        let s = seedNum;
-
-        while (x < 232) {
-          s = (s * 1664525 + 1013904223) % 4294967296;
-          const barW = (s % 3 === 0) ? 3.2 : (s % 2 === 0 ? 1.8 : 1.0);
-          const gapW = ((s >> 4) % 3 === 0) ? 2.8 : 1.5;
-          if (x + barW <= 234) {
-            svgContent += `<rect x="${x.toFixed(1)}" y="2" width="${barW}" height="36" fill="#171513" />`;
+        viewfinderEl.addEventListener('click', () => {
+          if (didSwipe) {
+            didSwipe = false;
+            return;
           }
-          x += barW + gapW;
+          goNextScene();
+        });
+      }
+
+      /* ===========================================================
+         6. COINCIDENCE SLIP THERMAL RECEIPT GENERATOR (偶然の一枚)
+         =========================================================== */
+      const printSlipBtn = document.getElementById('printSlipBtn');
+      const slotLip = document.getElementById('slotLip');
+      const receiptViewport = document.getElementById('receiptViewport');
+      const receiptPaper = document.getElementById('receiptPaper');
+      const receiptMovie = document.getElementById('receiptMovie');
+      const receiptLine = document.getElementById('receiptLine');
+      const receiptBarcode = document.getElementById('receiptBarcode');
+
+      function drawBarcode(seed) {
+        if (!receiptBarcode) return;
+        let bars = '';
+        let x = 4;
+        let s = seed;
+        while (x < 224) {
+          s = (s * 1664525 + 1013904223) % 4294967296;
+          const w = (s % 3 === 0) ? 3 : (s % 2 === 0 ? 1.8 : 1);
+          const gap = ((s >> 4) % 3 === 0) ? 2.6 : 1.5;
+          if (x + w <= 226) {
+            bars += `<rect x="${x.toFixed(1)}" y="1" width="${w}" height="30" fill="#151412" />`;
+          }
+          x += w + gap;
         }
-        receiptBarcodeEl.innerHTML = svgContent;
+        receiptBarcode.innerHTML = bars;
       }
 
-      function printCoincidenceReceipt() {
-        receiptPrintCount++;
+      function printCoincidenceSlip() {
+        printCount++;
 
-        // Pick non-repeating random film & quote
-        let fIdx = Math.floor(Math.random() * INDIE_FILMS.length);
-        if (fIdx === lastFilmIdx) fIdx = (fIdx + 1) % INDIE_FILMS.length;
-        lastFilmIdx = fIdx;
+        let mIdx = Math.floor(Math.random() * MOVIE_REFERENCES.length);
+        if (mIdx === lastMovieIdx) mIdx = (mIdx + 1) % MOVIE_REFERENCES.length;
+        lastMovieIdx = mIdx;
 
-        let qIdx = Math.floor(Math.random() * RECEIPT_QUOTES.length);
-        if (qIdx === lastQuoteIdx) qIdx = (qIdx + 1) % RECEIPT_QUOTES.length;
-        lastQuoteIdx = qIdx;
+        let lIdx = Math.floor(Math.random() * SLIP_LINES.length);
+        if (lIdx === lastLineIdx) lIdx = (lIdx + 1) % SLIP_LINES.length;
+        lastLineIdx = lIdx;
 
-        const randSerial = Math.floor(1000 + Math.random() * 9000);
-        const serialStr = `YJ-0913-${randSerial}`;
+        const chosenLine = SLIP_LINES[lIdx];
+        receiptMovie.textContent = MOVIE_REFERENCES[mIdx];
+        receiptLine.textContent = chosenLine.text;
 
-        receiptSerialEl.textContent = serialStr;
-        receiptDateTimeEl.textContent = formatNowTimestamp();
-        receiptFilmEl.textContent = INDIE_FILMS[fIdx];
-        receiptQuoteEl.textContent = RECEIPT_QUOTES[qIdx];
-        receiptBarcodeTextEl.textContent = `19990913 ${randSerial} 20261211`;
+        if (chosenLine.lang === 'en') {
+          receiptLine.className = 'font-en-serif italic text-[15px] leading-[1.6] tracking-[0.02em] text-[#151412]/90 mt-1.5';
+        } else {
+          receiptLine.className = 'font-jp-serif text-[12.5px] leading-[1.85] tracking-[0.05em] text-[#151412]/90 mt-1.5';
+        }
 
-        renderThermalBarcode(randSerial + receiptPrintCount * 913);
+        drawBarcode(913 + printCount * 1211 + mIdx * 37 + lIdx * 13);
 
-        // Reveal printer slot & viewport on first draw
-        if (receiptIntroBox) receiptIntroBox.classList.add('hidden');
-        if (printerSlotLip) printerSlotLip.classList.remove('hidden');
+        if (slotLip) slotLip.classList.remove('hidden');
         if (receiptViewport) receiptViewport.classList.remove('hidden');
-        if (reprintWrap) reprintWrap.classList.remove('hidden');
 
-        // Re-trigger smooth thermal slide-out animation
-        receiptPaperCard.classList.remove('receipt-printing');
-        void receiptPaperCard.offsetWidth;
-        receiptPaperCard.classList.add('receipt-printing');
+        receiptPaper.classList.remove('receipt-printing');
+        void receiptPaper.offsetWidth;
+        receiptPaper.classList.add('receipt-printing');
 
-        playWarmChime();
-        showToast(`RECEIPT PRINTED · ${serialStr}`);
+        playPaperTick();
       }
 
-      if (printReceiptBtn) printReceiptBtn.addEventListener('click', printCoincidenceReceipt);
-      if (reprintReceiptBtn) reprintReceiptBtn.addEventListener('click', printCoincidenceReceipt);
+      if (printSlipBtn) {
+        printSlipBtn.addEventListener('click', printCoincidenceSlip);
+      }
 
-      /* ==========================================================
-         9. SECTION 5: LIVE COUNTDOWN & .ICS CALENDAR GENERATOR
-         ========================================================== */
-      const LAUNCH_MS = new Date('2026-12-11T00:00:00+08:00').getTime();
+      /* ===========================================================
+         7. LIVE COUNTDOWN TO 2026-12-11T00:00:00+08:00
+         =========================================================== */
+      const RELEASE_TIMESTAMP = new Date('2026-12-11T00:00:00+08:00').getTime();
       const cdDays = document.getElementById('cdDays');
       const cdHours = document.getElementById('cdHours');
       const cdMinutes = document.getElementById('cdMinutes');
@@ -1824,77 +1463,86 @@
       const countdownGrid = document.getElementById('countdownGrid');
       const countdownOpenedNote = document.getElementById('countdownOpenedNote');
 
-      function tickCountdown() {
-        const diff = LAUNCH_MS - Date.now();
+      function updateCountdown() {
+        const diff = RELEASE_TIMESTAMP - Date.now();
+
         if (diff <= 0) {
           if (countdownGrid) countdownGrid.classList.add('hidden');
           if (countdownOpenedNote) countdownOpenedNote.classList.remove('hidden');
           return;
         }
-        const days = Math.floor(diff / 86400000);
-        const hours = Math.floor((diff / 3600000) % 24);
-        const mins = Math.floor((diff / 60000) % 60);
-        const secs = Math.floor((diff / 1000) % 60);
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
 
         cdDays.textContent = String(days).padStart(2, '0');
         cdHours.textContent = String(hours).padStart(2, '0');
-        cdMinutes.textContent = String(mins).padStart(2, '0');
-        cdSeconds.textContent = String(secs).padStart(2, '0');
+        cdMinutes.textContent = String(minutes).padStart(2, '0');
+        cdSeconds.textContent = String(seconds).padStart(2, '0');
       }
 
+      /* ===========================================================
+         8. REAL .ICS CALENDAR FILE GENERATOR
+         =========================================================== */
       const addCalendarBtn = document.getElementById('addCalendarBtn');
-      function downloadCalendarICS() {
+
+      function downloadICSFile() {
         try {
-          const ics = [
+          const icsLines = [
             'BEGIN:VCALENDAR',
             'VERSION:2.0',
             'PRODID:-//YEONEPOCH//2027 Calendar Collection//EN',
             'CALSCALE:GREGORIAN',
             'METHOD:PUBLISH',
             'BEGIN:VEVENT',
-            'UID:2027-yeonjun-calendar-launch-20261211@yeonepoch',
+            'UID:2027-yeonjun-calendar-collection@yeonepoch',
             'DTSTAMP:20261125T000000Z',
             'DTSTART;VALUE=DATE:20261211',
             'DTEND;VALUE=DATE:20261212',
-            'SUMMARY:2027 YEONJUN CALENDAR COLLECTION - 偶然と想像 上线',
-            'DESCRIPTION:2027 YEONJUN CALENDAR COLLECTION (Wheel of Fortune and Fantasy / 偶然と想像) 正式上线。日常の中に潜む、君という奇跡。',
+            'SUMMARY:2027 YEONJUN CALENDAR COLLECTION — 偶然と想像 (Online Release)',
+            'DESCRIPTION:2027 YEONJUN CALENDAR COLLECTION (Wheel of Fortune and Fantasy / 偶然と想像) Pre-Order Opens. 日常の中に潜む、君という奇跡。',
             'BEGIN:VALARM',
             'TRIGGER:-PT1H',
             'ACTION:DISPLAY',
-            'DESCRIPTION:2027 YEONJUN CALENDAR COLLECTION - 偶然と想像 上线提醒',
+            'DESCRIPTION:2027 YEONJUN CALENDAR COLLECTION Pre-Order Reminder',
             'END:VALARM',
             'END:VEVENT',
             'END:VCALENDAR'
-          ].join('\r\n');
+          ];
 
-          const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+          const blob = new Blob([icsLines.join('\r\n')], { type: 'text/calendar;charset=utf-8' });
           const url = URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = url;
-          a.setAttribute('download', '2027_YEONJUN_Calendar_20261211.ics');
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
+          const link = document.createElement('a');
+          link.href = url;
+          link.setAttribute('download', '2027_YEONJUN_Calendar_Release_1211.ics');
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
           setTimeout(() => URL.revokeObjectURL(url), 1000);
 
-          playWarmChime();
-          showToast('CALENDAR REMINDER SAVED (.ICS)');
+          playPaperTick();
+          showToast('REMINDER SAVED — 2026.12.11 (.ICS)');
         } catch (err) {
-          showToast('LAUNCH DATE: 2026.12.11');
+          showToast('RELEASE DATE: 2026.12.11');
         }
       }
 
-      if (addCalendarBtn) addCalendarBtn.addEventListener('click', downloadCalendarICS);
+      if (addCalendarBtn) {
+        addCalendarBtn.addEventListener('click', downloadICSFile);
+      }
 
-      /* ==========================================================
-         10. INTERSECTION OBSERVER & INITIALIZATION
-         ========================================================== */
+      /* ===========================================================
+         9. SCROLL REVEAL OBSERVER
+         =========================================================== */
       function initScrollReveal() {
-        const sections = document.querySelectorAll('.reveal-section');
+        const targets = document.querySelectorAll('.reveal-section');
         if (!('IntersectionObserver' in window)) {
-          sections.forEach((s) => s.classList.add('is-visible'));
+          targets.forEach((el) => el.classList.add('is-visible'));
           return;
         }
+
         const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
@@ -1904,24 +1552,28 @@
               }
             });
           },
-          { threshold: 0.1, rootMargin: '0px 0px -24px 0px' }
+          { threshold: 0.12, rootMargin: '0px 0px -30px 0px' }
         );
-        sections.forEach((s) => observer.observe(s));
+
+        targets.forEach((el) => observer.observe(el));
       }
 
+      /* ===========================================================
+         10. BOOTSTRAP ON WINDOW LOAD
+         =========================================================== */
       window.addEventListener('resize', resizeCanvases, { passive: true });
 
       window.onload = function () {
-        noiseTile = createNoiseTile();
+        noisePatternCanvas = buildNoiseTile();
         resizeCanvases();
-        buildMonthIndexBar();
-        renderMonthlyCard(0, false);
-        // Keep hero atmosphere warm vintage gold until user interacts with cards
+        buildFrameDots();
+        renderSceneInstant(0, false);
+        // Initial warm aged-gold hero ambiance
         targetRgb = [200, 169, 126];
-        tickCountdown();
-        setInterval(tickCountdown, 1000);
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
         initScrollReveal();
-        requestAnimationFrame(animateBackdrop);
+        requestAnimationFrame(renderLoop);
       };
     })();
   </script>
