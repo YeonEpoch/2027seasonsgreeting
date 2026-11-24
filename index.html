@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>偶然と想像 | 2027 YEONJUN CALENDAR COLLECTION — TEASER</title>
 
-  <!-- Google Fonts: Japanese Cinema Serif, Arthouse English Serif, 35mm Metadata Mono -->
+  <!-- Google Fonts: Japanese Cinema Serif, Arthouse English Serif, 35mm Metadata Mono, Korean Serif Fallback -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=IBM+Plex+Mono:wght@300;400;500&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=IBM+Plex+Mono:wght@300;400;500&family=Noto+Serif+KR:wght@300;400&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -27,7 +27,7 @@
             'deep-crimson': '#7A2632',
           },
           fontFamily: {
-            'jp-serif': ['"Shippori Mincho"', 'serif'],
+            'jp-serif': ['"Shippori Mincho"', '"Noto Serif KR"', 'serif'],
             'en-serif': ['"Cormorant Garamond"', 'Georgia', 'serif'],
             'mono-meta': ['"IBM Plex Mono"', 'monospace'],
           },
@@ -66,7 +66,7 @@
       padding: 0;
       overflow-x: hidden;
       background-color: var(--bg-matte);
-      font-family: 'Shippori Mincho', serif;
+      font-family: 'Shippori Mincho', 'Noto Serif KR', serif;
     }
 
     ::selection {
@@ -159,8 +159,8 @@
 
     @keyframes receiptSlideOut {
       0% {
-        transform: translateY(-96%);
-        opacity: 0.25;
+        transform: translateY(-94%);
+        opacity: 0.35;
       }
       18% {
         opacity: 1;
@@ -252,8 +252,10 @@
       border-color: rgba(200, 169, 126, 0.48);
     }
 
-    /* Vintage Cream Thermal Receipt Slip (from Version 2) */
-    .receipt-viewport {
+    /* =========================================
+       RETRO THERMAL COINCIDENCE RECEIPT
+       ========================================= */
+    .receipt-printer-viewport {
       overflow: hidden;
       position: relative;
     }
@@ -261,19 +263,19 @@
     .receipt-paper {
       background-color: #F2ECE1;
       background-image:
-        radial-gradient(rgba(14, 13, 12, 0.03) 1px, transparent 0),
-        linear-gradient(180deg, rgba(200, 169, 126, 0.14) 0%, rgba(242, 236, 225, 0) 14%, rgba(242, 236, 225, 0) 86%, rgba(200, 169, 126, 0.12) 100%);
-      background-size: 14px 14px, 100% 100%;
-      color: #151412;
-      box-shadow: 0 20px 44px rgba(0, 0, 0, 0.6);
+        radial-gradient(rgba(23, 21, 19, 0.035) 1px, transparent 0),
+        linear-gradient(180deg, rgba(200, 169, 126, 0.12) 0%, rgba(242, 236, 225, 0) 14%, rgba(242, 236, 225, 0) 86%, rgba(200, 169, 126, 0.14) 100%);
+      background-size: 16px 16px, 100% 100%;
+      color: #171513;
+      box-shadow: 0 22px 48px rgba(0, 0, 0, 0.65);
     }
 
     .receipt-printing {
-      animation: receiptSlideOut 1.05s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation: receiptSlideOut 1.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
-    .receipt-rule {
-      border-top: 1px dashed rgba(21, 20, 18, 0.3);
+    .receipt-divider {
+      border-top: 1px dashed rgba(23, 21, 19, 0.34);
     }
 
     /* Subtle Darkroom Vignette */
@@ -383,7 +385,7 @@
               日常の中に潜む、君という奇跡。
             </p>
             <p class="font-en-serif italic text-[13px] tracking-[0.06em] text-muted-ash mt-1.5">
-              The miracle called &lsquo;Yeonjun&rsquo; hidden in everyday life.
+              The miracle called &lsquo;You&rsquo; hidden in everyday life.
             </p>
           </div>
         </div>
@@ -464,9 +466,6 @@
               <span id="sceneCounter" class="font-mono-meta text-[10px] tracking-[0.26em] text-cream-paper">
                 SCENE 01 / 12
               </span>
-              <span id="sceneBadgeGhost" class="hidden font-mono-meta text-[8.5px] tracking-[0.2em] px-1.5 py-0.5 border border-[#B94A48]/70 text-[#E08A8F] bg-[#7A2632]/25 rounded-[1px]">
-                GHOST GIRL
-              </span>
               <span id="sceneBadgeBirthday" class="hidden font-mono-meta text-[8.5px] tracking-[0.2em] px-1.5 py-0.5 border border-aged-gold/60 text-aged-gold bg-aged-gold/10 rounded-[1px]">
                 0913
               </span>
@@ -541,106 +540,149 @@
       </section>
 
       <!-- =======================================
-           SECTION 3: COINCIDENCE SLIP / 偶然の一枚 (THERMAL RECEIPT FROM VERSION 2)
+           SECTION 3: INTERACTIVE RETRO RECEIPT GENERATOR ("偶然小票")
            ======================================= -->
-      <section id="coincidenceSlip" class="reveal-section px-6 pt-10 pb-20">
+      <section id="receiptSection" class="reveal-section px-6 pt-6 pb-20">
 
-        <!-- Section Header (Styled consistently with Version 1) -->
-        <div class="flex items-end justify-between mb-6">
-          <div>
-            <p class="font-mono-meta text-[9px] tracking-[0.3em] text-aged-gold uppercase">
-              COINCIDENCE SLIP
-            </p>
-            <h2 class="font-jp-serif text-[20px] tracking-[0.26em] text-cream-paper mt-1">
-              偶然の一枚
-            </h2>
-          </div>
-          <span class="font-mono-meta text-[9.5px] tracking-[0.22em] text-muted-ash">
-            PRINT A MOMENT
-          </span>
+        <!-- Section Header -->
+        <div class="text-center mb-6">
+          <p class="font-mono-meta text-[9px] tracking-[0.28em] text-[#C8A97E] uppercase">
+            EPHEMERA PREVIEW &middot; INTERACTIVE
+          </p>
+          <h2 class="font-jp-serif text-[21px] tracking-[0.24em] text-[#F2ECE1] mt-1.5">
+            偶然小票
+          </h2>
+          <p class="font-en-serif italic text-[15px] tracking-[0.08em] text-[#9A9185] mt-1">
+            Coincidence Thermal Receipt Dispenser
+          </p>
         </div>
 
-        <!-- Retro Thermal Slot Dispenser -->
-        <div class="rounded-[2px] border border-cream-paper/15 bg-card-surface/85 backdrop-blur-sm p-5 shadow-[0_18px_44px_rgba(0,0,0,0.52)]">
+        <!-- Thermal Printer Slot Container -->
+        <div class="rounded-[3px] border border-[#C8A97E]/25 bg-[#171513]/85 p-5 shadow-[0_18px_46px_rgba(0,0,0,0.55)]">
 
-          <!-- Trigger Button -->
-          <button
-            id="printSlipBtn"
-            type="button"
-            class="w-full min-h-[48px] px-4 py-3 rounded-[2px] border border-aged-gold/50 bg-aged-gold/[0.1] hover:bg-aged-gold hover:text-film-charcoal active:scale-[0.98] transition-all flex items-center justify-center gap-2.5 text-cream-paper"
-          >
-            <span class="font-jp-serif text-[13px] tracking-[0.18em]">
-              偶然を受け取る
-            </span>
-            <span class="opacity-45">&middot;</span>
-            <span class="font-mono-meta text-[9.5px] tracking-[0.2em]">
-              PRINT A MOMENT
-            </span>
-          </button>
+          <!-- Callout & Primary Print Trigger -->
+          <div id="receiptIntroBox" class="text-center">
+            <p class="font-jp-serif text-[12px] leading-[1.9] tracking-[0.1em] text-[#F2ECE1]/80 max-w-[300px] mx-auto">
+              按下按钮，为你打印一张今日专属的「偶然小票」。可截图留存或分享你的2027然竣电影坐标。
+            </p>
 
-          <!-- Recessed Dark Thermal Slot Lip (Reveals on Click) -->
-          <div id="slotLip" class="hidden mt-5">
-            <div class="h-2.5 w-full rounded-full bg-[#070606] border border-aged-gold/25 shadow-[inset_0_2px_6px_rgba(0,0,0,0.95)] flex items-center justify-center">
-              <div class="w-[90%] h-[2px] bg-black rounded-full"></div>
+            <button
+              id="printReceiptBtn"
+              type="button"
+              class="mt-5 w-full min-h-[48px] px-4 py-3 rounded-[2px] border border-[#C8A97E]/60 bg-[#C8A97E]/15 hover:bg-[#C8A97E] hover:text-[#0E0D0C] active:scale-[0.98] transition-all font-mono-meta text-[10px] tracking-[0.2em] text-[#F2ECE1] flex flex-col items-center justify-center gap-0.5"
+            >
+              <span>PRINT MY COINCIDENCE RECEIPT</span>
+              <span class="font-jp-serif text-[11px] tracking-[0.22em] opacity-85">抽取偶然小票</span>
+            </button>
+          </div>
+
+          <!-- Printer Slot Lip -->
+          <div id="printerSlotLip" class="hidden mt-2 mb-0 relative">
+            <div class="h-3 w-full rounded-full bg-[#070606] border border-[#C8A97E]/30 shadow-[inset_0_3px_8px_rgba(0,0,0,0.95)] flex items-center justify-center">
+              <div class="w-[92%] h-[2px] bg-black rounded-full"></div>
             </div>
           </div>
 
-          <!-- Sliding Vintage Cream Thermal Receipt Slip -->
-          <div id="receiptViewport" class="hidden receipt-viewport -mt-1 pt-1 px-1 pb-2">
-            <div id="receiptPaper" class="receipt-paper relative w-full mx-auto">
+          <!-- Sliding Receipt Output Viewport -->
+          <div id="receiptViewport" class="hidden receipt-printer-viewport -mt-1.5 pt-1 px-1.5 pb-2">
+            <div id="receiptPaperCard" class="receipt-paper relative w-full mx-auto">
 
-              <!-- Inner Thermal Content -->
-              <div class="px-5 pt-5 pb-5 text-[#151412]">
+              <!-- Top Serrated Zigzag Edge (Pure SVG) -->
+              <svg class="w-full h-[8px] block -mt-[1px]" viewBox="0 0 320 8" preserveAspectRatio="none" aria-hidden="true">
+                <polygon
+                  fill="#171513"
+                  points="0,0 8,8 16,0 24,8 32,0 40,8 48,0 56,8 64,0 72,8 80,0 88,8 96,0 104,8 112,0 120,8 128,0 136,8 144,0 152,8 160,0 168,8 176,0 184,8 192,0 200,8 208,0 216,8 224,0 232,8 240,0 248,8 256,0 264,8 272,0 280,8 288,0 296,8 304,0 312,8 320,0 320,0 0,0"
+                />
+              </svg>
 
-                <!-- Receipt Header -->
-                <div class="text-center pb-3.5 border-b border-dashed border-[#151412]/30">
-                  <p class="font-en-serif italic font-medium text-[17px] tracking-[0.06em] leading-tight">
+              <!-- Inner Thermal Print Content -->
+              <div class="px-5 pt-4 pb-5 text-[#171513]">
+                <!-- Receipt Top Header -->
+                <div class="text-center pb-3.5 receipt-divider border-t-0 border-b border-dashed border-[#171513]/35">
+                  <p class="font-mono-meta text-[8px] tracking-[0.26em] uppercase text-[#171513]/65">
+                    *** ADMIT ONE &middot; COINCIDENCE SLIP ***
+                  </p>
+                  <p class="font-en-serif italic font-semibold text-[18px] tracking-[0.06em] mt-1.5 leading-tight">
                     WHEEL OF FORTUNE &amp; FANTASY
                   </p>
-                  <p class="font-mono-meta text-[9px] tracking-[0.22em] text-[#151412]/75 mt-1.5">
-                    YEONJUN &middot; <span class="font-jp-serif tracking-[0.18em]">ヨンジュン</span>
+                  <p class="font-mono-meta text-[9px] tracking-[0.18em] text-[#171513]/80 mt-1">
+                    2027 COLLECTION &middot; NO. 19990913
                   </p>
                 </div>
 
-                <!-- Random Movie Reference -->
-                <div class="py-3.5">
-                  <span class="font-mono-meta text-[8px] tracking-[0.24em] text-[#151412]/55 uppercase block">
-                    FILM REFERENCE
+                <!-- Serial & Timestamp Grid -->
+                <div class="py-3 space-y-1.5 font-mono-meta text-[9px] tracking-[0.12em]">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[#171513]/60">SERIAL NO.</span>
+                    <span id="receiptSerial" class="font-medium">YJ-0913-0001</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-[#171513]/60">PRINTED AT</span>
+                    <span id="receiptDateTime">2026-11-25 00:00</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-[#171513]/60">STARRING</span>
+                    <span class="font-medium">CHOI YEONJUN / <span class="font-jp-serif">ヨンジュン</span></span>
+                  </div>
+                </div>
+
+                <!-- Indie Film Reference Block -->
+                <div class="py-3.5 receipt-divider">
+                  <span class="font-mono-meta text-[8px] tracking-[0.22em] text-[#171513]/55 uppercase block">
+                    TODAY&rsquo;S FILM REFERENCE
                   </span>
-                  <p id="receiptMovie" class="font-jp-serif font-medium text-[14.5px] tracking-[0.12em] text-[#151412] mt-1.5">
+                  <p id="receiptFilm" class="font-jp-serif font-medium text-[15px] tracking-[0.14em] text-[#171513] mt-1.5">
                     夜空はいつでも最高密度の青色だ
                   </p>
                 </div>
 
-                <!-- Random Fragment (Literary Quote or Yeonjun Lyric) -->
-                <div class="py-3.5 receipt-rule">
-                  <span class="font-mono-meta text-[8px] tracking-[0.24em] text-[#151412]/55 uppercase block">
-                    FRAGMENT
+                <!-- Random Quote / Lyric Fragment -->
+                <div class="py-3.5 receipt-divider">
+                  <span class="font-mono-meta text-[8px] tracking-[0.22em] text-[#171513]/55 uppercase block">
+                    DRAWN FRAGMENT
                   </span>
-                  <p id="receiptLine" class="font-jp-serif text-[12.5px] leading-[1.85] tracking-[0.05em] text-[#151412]/90 mt-1.5">
+                  <p id="receiptQuote" class="font-jp-serif text-[12.5px] leading-[1.85] tracking-[0.06em] text-[#171513]/90 mt-1.5">
                     人生における、ヨンジュンという名の季節。
                   </p>
                 </div>
 
-                <!-- Footer Metadata & Crisp Procedural SVG Barcode -->
-                <div class="pt-3.5 receipt-rule">
-                  <div class="flex items-center justify-between font-mono-meta text-[9px] tracking-[0.18em] text-[#151412]/80 mb-3.5">
-                    <span>NO. 0913</span>
-                    <span>ONLINE 2026.12.11</span>
-                  </div>
+                <!-- Launch Date Highlight -->
+                <div class="py-3 receipt-divider flex items-center justify-between font-mono-meta text-[9.5px] tracking-[0.16em]">
+                  <span class="text-[#171513]/65">LAUNCH DATE</span>
+                  <span class="font-medium bg-[#171513] text-[#F2ECE1] px-2 py-0.5">2026.12.11</span>
+                </div>
 
-                  <svg id="receiptBarcode" class="w-full max-w-[230px] h-8 mx-auto block" viewBox="0 0 230 32" aria-hidden="true"></svg>
+                <!-- Pure SVG Thermal Barcode -->
+                <div class="pt-4 receipt-divider flex flex-col items-center">
+                  <svg id="receiptBarcode" class="w-full max-w-[240px] h-10" viewBox="0 0 240 40" aria-hidden="true"></svg>
+                  <p id="receiptBarcodeText" class="font-mono-meta text-[8px] tracking-[0.32em] text-[#171513]/70 mt-1.5">
+                    19990913 20261211 2027
+                  </p>
+                  <p class="font-en-serif italic text-[11px] text-[#171513]/60 mt-2">
+                    Keep this slip until the door opens.
+                  </p>
                 </div>
               </div>
 
-              <!-- Serrated Bottom Edge (Pure SVG) -->
+              <!-- Bottom Serrated Zigzag Edge (Pure SVG) -->
               <svg class="w-full h-[8px] block -mb-[1px]" viewBox="0 0 320 8" preserveAspectRatio="none" aria-hidden="true">
                 <polygon
-                  fill="#151412"
+                  fill="#171513"
                   points="0,8 8,0 16,8 24,0 32,8 40,0 48,8 56,0 64,8 72,0 80,8 88,0 96,8 104,0 112,8 120,0 128,8 136,0 144,8 152,0 160,8 168,0 176,8 184,0 192,8 200,0 208,8 216,0 224,8 232,0 240,8 248,0 256,8 264,0 272,8 280,0 288,8 296,0 304,8 312,0 320,8 320,8 0,8"
                 />
               </svg>
             </div>
+          </div>
+
+          <!-- Re-Print Button (Shown after first receipt prints) -->
+          <div id="reprintWrap" class="hidden mt-4 text-center">
+            <button
+              id="reprintReceiptBtn"
+              type="button"
+              class="w-full min-h-[44px] px-4 py-2.5 rounded-[2px] border border-[#C8A97E]/45 bg-[#0E0D0C]/70 hover:bg-[#C8A97E]/15 active:scale-[0.98] transition-all font-mono-meta text-[9.5px] tracking-[0.22em] text-[#C8A97E]"
+            >
+              RE-PRINT <span class="opacity-50 mx-1">/</span> <span class="font-jp-serif text-[#F2ECE1] tracking-[0.18em]">再次抽取</span>
+            </button>
           </div>
         </div>
       </section>
@@ -704,8 +746,7 @@
             2027 SEASON&rsquo;S GREETINGS PROJECT <span class="text-aged-gold/40">/</span>
             STARRING: <span class="text-cream-paper/85">CHOI YEONJUN (<span class="font-jp-serif">ヨンジュン</span>)</span> <span class="text-aged-gold/40">/</span>
             CONCEPT INSPIRED BY WHEEL OF FORTUNE AND FANTASY <span class="text-aged-gold/40">/</span>
-            SPECIAL THANKS: MOA <span class="text-aged-gold/40">/</span>
-            DESIGNED FOR 12 MONTHLY CARDS
+            DESIGNED BY UBIK
           </p>
 
           <!-- Very Bottom Tiny Copyright Line -->
@@ -732,7 +773,7 @@
       'use strict';
 
       /* ===========================================================
-         1. SCENE DATA (FINAL 12 MONTHS FROM BRIEF) & COINCIDENCE SLIP
+         1. SCENE DATA (FINAL 12 MONTHS FROM BRIEF)
          =========================================================== */
       const SCENES = [
         {
@@ -744,7 +785,6 @@
           excerpt: '魔法なんでしょ。人生の中でも最高の一日だったらしいじゃない。',
           moodRgb: [184, 166, 140],
           glowHex: '#6E5E4B',
-          isGhost: false,
           isBirthday: false
         },
         {
@@ -756,7 +796,6 @@
           excerpt: '万有引力とは、ひき合う孤独の力である。',
           moodRgb: [158, 146, 132],
           glowHex: '#524C46',
-          isGhost: false,
           isBirthday: false
         },
         {
@@ -768,7 +807,6 @@
           excerpt: '春はあけぼの。やうやう白くなりゆく山ぎは、少し明かりて、紫だちたる雲の細くたなびきたる。',
           moodRgb: [196, 162, 128],
           glowHex: '#765D48',
-          isGhost: false,
           isBirthday: false
         },
         {
@@ -780,7 +818,6 @@
           excerpt: '人を好きになった瞬間って、ずーっとずーっと残っていくものだよ。それだけが、生きてく勇気になる。暗闇を照らす、懐中電灯になるよ。',
           moodRgb: [204, 162, 110],
           glowHex: '#826342',
-          isGhost: false,
           isBirthday: false
         },
         {
@@ -790,9 +827,8 @@
           jpTitle: '魂の行方、あるいは美しい幻。',
           enTitle: 'Where my soul belongs, my beautiful ghost.',
           excerpt: '現実を忘れて、君という幻影に溺れる。',
-          moodRgb: [122, 38, 50],
-          glowHex: '#6A222C',
-          isGhost: true,
+          moodRgb: [164, 146, 130],
+          glowHex: '#5C5046',
           isBirthday: false
         },
         {
@@ -804,7 +840,6 @@
           excerpt: '鳴神の 少しとよみて さし曇り 雨も降らぬか 君を留めむ。',
           moodRgb: [132, 144, 138],
           glowHex: '#45504B',
-          isGhost: false,
           isBirthday: false
         },
         {
@@ -816,7 +851,6 @@
           excerpt: '見えぬけれどもあるんだよ、見えぬものでもあるんだよ。',
           moodRgb: [96, 116, 142],
           glowHex: '#2F3E52',
-          isGhost: false,
           isBirthday: false
         },
         {
@@ -828,7 +862,6 @@
           excerpt: '本当に他人を見たいと望むなら、自分自身を深くまっすぐ見つめるしかないんです。',
           moodRgb: [176, 148, 114],
           glowHex: '#6E5A42',
-          isGhost: false,
           isBirthday: false
         },
         {
@@ -840,7 +873,6 @@
           excerpt: '世界中のどこかに、自分にとっての百パーセントの存在が必ずいるはずだと。そう、私たちは奇跡を信じていた。',
           moodRgb: [208, 174, 124],
           glowHex: '#8C6F47',
-          isGhost: false,
           isBirthday: true
         },
         {
@@ -852,7 +884,6 @@
           excerpt: '告白は子供がするものですよ。大人は誘惑してください。猫になるか、虎になるか、雨に濡れた犬になるか。',
           moodRgb: [184, 134, 98],
           glowHex: '#6E4B35',
-          isGhost: false,
           isBirthday: false
         },
         {
@@ -864,7 +895,6 @@
           excerpt: 'めぐる季節と、君との記憶。',
           moodRgb: [164, 118, 92],
           glowHex: '#5C4134',
-          isGhost: false,
           isBirthday: false
         },
         {
@@ -876,43 +906,12 @@
           excerpt: '国境の長いトンネルを抜けると雪国であった。夜の底が白くなった。',
           moodRgb: [186, 174, 156],
           glowHex: '#665E52',
-          isGhost: false,
           isBirthday: false
         }
       ];
 
-      const MOVIE_REFERENCES = [
-        '夜空はいつでも最高密度の青色だ',
-        'きみの鳥はうたえる',
-        '旅と日々',
-        '見はらし世代',
-        '夏の砂の上',
-        'ルックバック',
-        '茜色に焼かれる',
-        '朝が来る',
-        'ラブ&ポップ',
-        '寝ても覚めても',
-        '静かな雨'
-      ];
-
-      const SLIP_LINES = [
-        { lang: 'jp', text: '魔法なんでしょ。人生の中でも最高の一日だったらしいじゃない。' },
-        { lang: 'jp', text: '万有引力とは、ひき合う孤独の力である。' },
-        { lang: 'jp', text: '人生における、ヨンジュンという名の季節。' },
-        { lang: 'jp', text: '人を好きになった瞬間って、ずーっとずーっと残っていくものだよ。暗闇を照らす、懐中電灯になるよ。' },
-        { lang: 'jp', text: '現実を忘れて、君という幻影に溺れる。' },
-        { lang: 'jp', text: 'すべてを奪われてもいい、君だけが私の息をさせるから。' },
-        { lang: 'en', text: "You've been chasing highs in all different cities — You still shine." },
-        { lang: 'en', text: "Close my eyes, I don't know if I'd rather be dreamin' or be with you." },
-        { lang: 'en', text: 'All I want is for you to hear me as I am, nothing more, nothing less.' },
-        { lang: 'en', text: 'My very presence speaks for me, and it will not be silenced.' }
-      ];
-
       let currentSceneIndex = 0;
       let isSwitchingScene = false;
-      let lastMovieIdx = -1;
-      let lastLineIdx = -1;
-      let printCount = 0;
 
       /* ===========================================================
          2. SUBTLE TOAST NOTIFICATION HELPER
@@ -934,7 +933,7 @@
       }
 
       /* ===========================================================
-         3. WEB AUDIO API: 35MM SHUTTER & SOFT THERMAL PAPER-FEED TICK
+         3. WEB AUDIO API: 35MM SHUTTER, PAPER TICK & WARM CHIME
          =========================================================== */
       let soundEnabled = false;
       let audioCtx = null;
@@ -1040,6 +1039,35 @@
             filter.connect(gain);
             gain.connect(audioCtx.destination);
             src.start(t);
+          });
+        } catch (err) {
+          // Ignore playback error
+        }
+      }
+
+      function playWarmChime() {
+        if (!soundEnabled) return;
+        try {
+          initAudioContext();
+          if (!audioCtx) return;
+
+          const now = audioCtx.currentTime;
+          const notes = [293.66, 369.99, 440.0, 659.25];
+          notes.forEach((freq, idx) => {
+            const t = now + idx * 0.085;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, t);
+
+            gain.gain.setValueAtTime(0.0001, t);
+            gain.gain.linearRampToValueAtTime(0.065 / (1 + idx * 0.15), t + 0.03);
+            gain.gain.exponentialRampToValueAtTime(0.0005, t + 1.35);
+
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start(t);
+            osc.stop(t + 1.4);
           });
         } catch (err) {
           // Ignore playback error
@@ -1226,7 +1254,6 @@
       const frameMoodGlowEl = document.getElementById('frameMoodGlow');
       const sceneContentEl = document.getElementById('sceneContent');
       const sceneCounterEl = document.getElementById('sceneCounter');
-      const sceneBadgeGhostEl = document.getElementById('sceneBadgeGhost');
       const sceneBadgeBirthdayEl = document.getElementById('sceneBadgeBirthday');
       const sceneMonthTagEl = document.getElementById('sceneMonthTag');
       const sceneCodeLineEl = document.getElementById('sceneCodeLine');
@@ -1248,7 +1275,7 @@
           bar.setAttribute('aria-label', `Select Scene ${sc.id} ${sc.monthShort}`);
           bar.className = 'h-[2px] flex-1 transition-all duration-500 rounded-full focus:outline-none ' +
             (idx === currentSceneIndex
-              ? (sc.isGhost ? 'bg-[#B34A58]' : 'bg-aged-gold')
+              ? 'bg-aged-gold'
               : 'bg-cream-paper/15 hover:bg-aged-gold/45');
           bar.addEventListener('click', () => switchScene(idx));
           frameDotsEl.appendChild(bar);
@@ -1260,11 +1287,10 @@
         const children = frameDotsEl.children;
         for (let i = 0; i < children.length; i++) {
           const isCurrent = i === currentSceneIndex;
-          const isGhost = SCENES[i].isGhost;
           children[i].setAttribute('aria-selected', String(isCurrent));
           children[i].className = 'h-[2px] flex-1 transition-all duration-500 rounded-full focus:outline-none ' +
             (isCurrent
-              ? (isGhost ? 'bg-[#B34A58]' : 'bg-aged-gold')
+              ? 'bg-aged-gold'
               : 'bg-cream-paper/15 hover:bg-aged-gold/45');
         }
       }
@@ -1279,16 +1305,14 @@
         sceneEnTitleEl.textContent = scene.enTitle;
         sceneExcerptEl.textContent = scene.excerpt;
 
-        // Toggle May 05 Ghost Girl crimson accent & Sep 09 Birthday aged-gold badge
-        } else if (scene.isBirthday) {
-          sceneBadgeGhostEl.classList.add('hidden');
+        // Emphasize only Sep 09 Birthday with aged-gold badge & border
+        if (scene.isBirthday) {
           sceneBadgeBirthdayEl.classList.remove('hidden');
           viewfinderEl.style.borderColor = 'rgba(200, 169, 126, 0.42)';
           viewfinderEl.style.boxShadow = '0 16px 46px rgba(0, 0, 0, 0.55)';
           sceneCodeLineEl.style.color = 'rgba(200, 169, 126, 0.9)';
           sceneDividerEl.style.backgroundColor = 'rgba(200, 169, 126, 0.45)';
         } else {
-          sceneBadgeGhostEl.classList.add('hidden');
           sceneBadgeBirthdayEl.classList.add('hidden');
           viewfinderEl.style.borderColor = 'rgba(242, 236, 225, 0.14)';
           viewfinderEl.style.boxShadow = 'none';
@@ -1388,69 +1412,121 @@
       }
 
       /* ===========================================================
-         6. COINCIDENCE SLIP THERMAL RECEIPT GENERATOR (偶然の一枚)
+         6. RETRO THERMAL COINCIDENCE RECEIPT GENERATOR ("偶然小票")
          =========================================================== */
-      const printSlipBtn = document.getElementById('printSlipBtn');
-      const slotLip = document.getElementById('slotLip');
+      const INDIE_FILMS = [
+        '夜空はいつでも最高密度の青色だ',
+        'きみの鳥はうたえる',
+        '旅と日々',
+        '見はらし世代',
+        '夏の砂の上',
+        'ルックバック',
+        '茜色に焼かれる',
+        '朝が来る',
+        'ラブ&ポップ',
+        '寝ても覚めても',
+        '静かな雨'
+      ];
+
+      const RECEIPT_QUOTES = [
+        '人生における、ヨンジュンという名の季節。',
+        'no labels, just me',
+        '日常の中に潜む、君という奇跡。',
+        '時の流れに刻まれた、君という確かな軌跡。',
+        '日常の隙間に落ちた、君という光を拾い集めて。',
+        'めぐる季節と、君との記憶。',
+        'すべてを奪われてもいい、君だけが私の息をさせるから。',
+        'You still shine, 준아 아침은 오잖아 — 겁내지 마',
+        'All I want is for you to hear me as I am, nothing more, nothing less.',
+        'My very presence speaks for me, and it will not be silenced.',
+        '魔法なんでしょ。人生の中でも最高の一日だったらしいじゃない。',
+        '想像の力、あるいは愛。'
+      ];
+
+      let receiptPrintCount = 0;
+      let lastFilmIdx = -1;
+      let lastQuoteIdx = -1;
+
+      const printReceiptBtn = document.getElementById('printReceiptBtn');
+      const reprintReceiptBtn = document.getElementById('reprintReceiptBtn');
+      const receiptIntroBox = document.getElementById('receiptIntroBox');
+      const printerSlotLip = document.getElementById('printerSlotLip');
       const receiptViewport = document.getElementById('receiptViewport');
-      const receiptPaper = document.getElementById('receiptPaper');
-      const receiptMovie = document.getElementById('receiptMovie');
-      const receiptLine = document.getElementById('receiptLine');
-      const receiptBarcode = document.getElementById('receiptBarcode');
+      const receiptPaperCard = document.getElementById('receiptPaperCard');
+      const reprintWrap = document.getElementById('reprintWrap');
 
-      function drawBarcode(seed) {
-        if (!receiptBarcode) return;
-        let bars = '';
-        let x = 4;
-        let s = seed;
-        while (x < 224) {
+      const receiptSerialEl = document.getElementById('receiptSerial');
+      const receiptDateTimeEl = document.getElementById('receiptDateTime');
+      const receiptFilmEl = document.getElementById('receiptFilm');
+      const receiptQuoteEl = document.getElementById('receiptQuote');
+      const receiptBarcodeEl = document.getElementById('receiptBarcode');
+      const receiptBarcodeTextEl = document.getElementById('receiptBarcodeText');
+
+      function formatNowTimestamp() {
+        const d = new Date();
+        const yyyy = d.getFullYear();
+        const mm = String(d.getMonth() + 1).padStart(2, '0');
+        const dd = String(d.getDate()).padStart(2, '0');
+        const hh = String(d.getHours()).padStart(2, '0');
+        const mi = String(d.getMinutes()).padStart(2, '0');
+        return `${yyyy}.${mm}.${dd} ${hh}:${mi}`;
+      }
+
+      function renderThermalBarcode(seedNum) {
+        if (!receiptBarcodeEl) return;
+        let svgContent = '';
+        let x = 6;
+        let s = seedNum;
+
+        while (x < 232) {
           s = (s * 1664525 + 1013904223) % 4294967296;
-          const w = (s % 3 === 0) ? 3 : (s % 2 === 0 ? 1.8 : 1);
-          const gap = ((s >> 4) % 3 === 0) ? 2.6 : 1.5;
-          if (x + w <= 226) {
-            bars += `<rect x="${x.toFixed(1)}" y="1" width="${w}" height="30" fill="#151412" />`;
+          const barW = (s % 3 === 0) ? 3.2 : (s % 2 === 0 ? 1.8 : 1.0);
+          const gapW = ((s >> 4) % 3 === 0) ? 2.8 : 1.5;
+          if (x + barW <= 234) {
+            svgContent += `<rect x="${x.toFixed(1)}" y="2" width="${barW}" height="36" fill="#171513" />`;
           }
-          x += w + gap;
+          x += barW + gapW;
         }
-        receiptBarcode.innerHTML = bars;
+        receiptBarcodeEl.innerHTML = svgContent;
       }
 
-      function printCoincidenceSlip() {
-        printCount++;
+      function printCoincidenceReceipt() {
+        receiptPrintCount++;
 
-        let mIdx = Math.floor(Math.random() * MOVIE_REFERENCES.length);
-        if (mIdx === lastMovieIdx) mIdx = (mIdx + 1) % MOVIE_REFERENCES.length;
-        lastMovieIdx = mIdx;
+        let fIdx = Math.floor(Math.random() * INDIE_FILMS.length);
+        if (fIdx === lastFilmIdx) fIdx = (fIdx + 1) % INDIE_FILMS.length;
+        lastFilmIdx = fIdx;
 
-        let lIdx = Math.floor(Math.random() * SLIP_LINES.length);
-        if (lIdx === lastLineIdx) lIdx = (lIdx + 1) % SLIP_LINES.length;
-        lastLineIdx = lIdx;
+        let qIdx = Math.floor(Math.random() * RECEIPT_QUOTES.length);
+        if (qIdx === lastQuoteIdx) qIdx = (qIdx + 1) % RECEIPT_QUOTES.length;
+        lastQuoteIdx = qIdx;
 
-        const chosenLine = SLIP_LINES[lIdx];
-        receiptMovie.textContent = MOVIE_REFERENCES[mIdx];
-        receiptLine.textContent = chosenLine.text;
+        const randSerial = Math.floor(1000 + Math.random() * 9000);
+        const serialStr = `YJ-0913-${randSerial}`;
 
-        if (chosenLine.lang === 'en') {
-          receiptLine.className = 'font-en-serif italic text-[15px] leading-[1.6] tracking-[0.02em] text-[#151412]/90 mt-1.5';
-        } else {
-          receiptLine.className = 'font-jp-serif text-[12.5px] leading-[1.85] tracking-[0.05em] text-[#151412]/90 mt-1.5';
-        }
+        receiptSerialEl.textContent = serialStr;
+        receiptDateTimeEl.textContent = formatNowTimestamp();
+        receiptFilmEl.textContent = INDIE_FILMS[fIdx];
+        receiptQuoteEl.textContent = RECEIPT_QUOTES[qIdx];
+        receiptBarcodeTextEl.textContent = `19990913 ${randSerial} 20261211`;
 
-        drawBarcode(913 + printCount * 1211 + mIdx * 37 + lIdx * 13);
+        renderThermalBarcode(randSerial + receiptPrintCount * 913);
 
-        if (slotLip) slotLip.classList.remove('hidden');
+        if (receiptIntroBox) receiptIntroBox.classList.add('hidden');
+        if (printerSlotLip) printerSlotLip.classList.remove('hidden');
         if (receiptViewport) receiptViewport.classList.remove('hidden');
+        if (reprintWrap) reprintWrap.classList.remove('hidden');
 
-        receiptPaper.classList.remove('receipt-printing');
-        void receiptPaper.offsetWidth;
-        receiptPaper.classList.add('receipt-printing');
+        receiptPaperCard.classList.remove('receipt-printing');
+        void receiptPaperCard.offsetWidth;
+        receiptPaperCard.classList.add('receipt-printing');
 
-        playPaperTick();
+        playWarmChime();
+        showToast(`RECEIPT PRINTED · ${serialStr}`);
       }
 
-      if (printSlipBtn) {
-        printSlipBtn.addEventListener('click', printCoincidenceSlip);
-      }
+      if (printReceiptBtn) printReceiptBtn.addEventListener('click', printCoincidenceReceipt);
+      if (reprintReceiptBtn) reprintReceiptBtn.addEventListener('click', printCoincidenceReceipt);
 
       /* ===========================================================
          7. LIVE COUNTDOWN TO 2026-12-11T00:00:00+08:00
