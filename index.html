@@ -54,9 +54,9 @@
     }
 
     html {
-      scroll-behavior: smooth;
       background-color: var(--bg-matte);
       color: var(--ink-cream);
+      overflow-x: clip;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
@@ -64,7 +64,7 @@
     body {
       margin: 0;
       padding: 0;
-      overflow-x: hidden;
+      overflow-x: clip;
       background-color: var(--bg-matte);
       font-family: 'Shippori Mincho', 'Noto Serif KR', serif;
     }
@@ -79,10 +79,10 @@
       position: relative;
       width: 100%;
       max-width: 440px;
-      min-height: 100dvh;
+      min-height: 100svh;
       margin: 0 auto;
       background-color: var(--bg-charcoal);
-      overflow-x: hidden;
+      overflow-x: clip;
       box-shadow: 0 0 84px rgba(0, 0, 0, 0.92);
     }
 
@@ -144,13 +144,6 @@
       50% { opacity: 0.25; transform: scale(0.85); }
     }
 
-    @keyframes scrollDrop {
-      0% { transform: scaleY(0); transform-origin: top; opacity: 0; }
-      40% { transform: scaleY(1); transform-origin: top; opacity: 0.85; }
-      75% { transform: scaleY(1); transform-origin: bottom; opacity: 0.85; }
-      100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
-    }
-
     @keyframes shutterFlash {
       0% { opacity: 0; }
       18% { opacity: 0.24; }
@@ -210,10 +203,6 @@
 
     .rec-dot {
       animation: recPulse 2.4s ease-in-out infinite;
-    }
-
-    .scroll-line-inner {
-      animation: scrollDrop 2.6s var(--ease-cinema) infinite;
     }
 
     .shutter-flash-active {
@@ -333,7 +322,7 @@
       <!-- =======================================
            SECTION 1: FULL-VIEWPORT DYNAMIC POSTER HERO
            ======================================= -->
-      <section id="hero" class="relative min-h-[100dvh] flex flex-col justify-between px-6 pt-16 pb-8">
+      <section id="hero" class="relative min-h-[92svh] flex flex-col justify-between px-6 pt-16 pb-6">
 
         <!-- Top Poster Metadata Row -->
         <div class="anim-fade-1 flex items-center justify-between pt-3 pb-3 hairline-b">
@@ -390,7 +379,7 @@
           </div>
         </div>
 
-        <!-- Bottom Release Stamp & Scroll Cue -->
+        <!-- Bottom Release Stamp -->
         <div class="anim-fade-3 flex flex-col items-center">
           <div class="w-full flex items-end justify-between pb-4 hairline-b">
             <div>
@@ -403,19 +392,6 @@
             </div>
           </div>
 
-          <!-- Hairline Scroll Cue -->
-          <a
-            href="#fragments"
-            class="group mt-5 flex flex-col items-center gap-2 py-1 focus:outline-none"
-            aria-label="Scroll to interactive film fragments"
-          >
-            <span class="font-mono-meta text-[9px] tracking-[0.32em] text-muted-ash group-hover:text-aged-gold transition-colors">
-              SCROLL TO OPEN
-            </span>
-            <div class="w-[1px] h-8 bg-cream-paper/15 relative overflow-hidden">
-              <div class="scroll-line-inner absolute inset-0 bg-aged-gold/80"></div>
-            </div>
-          </a>
         </div>
       </section>
 
