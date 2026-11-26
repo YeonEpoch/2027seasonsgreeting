@@ -384,7 +384,7 @@
           <div class="w-full flex items-end justify-between pb-4 hairline-b">
             <div>
               <span class="font-mono-meta text-[9px] tracking-[0.28em] text-aged-gold/80 block">COMING SOON — PRE-ORDER</span>
-              <span class="font-mono-meta text-[20px] tracking-[0.24em] text-cream-paper font-light mt-0.5 block">2026.12.11</span>
+              <span class="font-mono-meta text-[20px] tracking-[0.24em] text-cream-paper font-light mt-0.5 block">2026.12.12</span>
             </div>
             <div class="text-right font-mono-meta text-[9px] tracking-[0.22em] text-muted-ash leading-relaxed">
               <div>SEASON&rsquo;S GREETINGS</div>
@@ -625,14 +625,14 @@
                 <!-- Launch Date Highlight -->
                 <div class="py-3 receipt-divider flex items-center justify-between font-mono-meta text-[9.5px] tracking-[0.16em]">
                   <span class="text-[#171513]/65">LAUNCH DATE</span>
-                  <span class="font-medium bg-[#171513] text-[#F2ECE1] px-2 py-0.5">2026.12.11</span>
+                  <span class="font-medium bg-[#171513] text-[#F2ECE1] px-2 py-0.5">2026.12.12</span>
                 </div>
 
                 <!-- Pure SVG Thermal Barcode -->
                 <div class="pt-4 receipt-divider flex flex-col items-center">
                   <svg id="receiptBarcode" class="w-full max-w-[240px] h-10" viewBox="0 0 240 40" aria-hidden="true"></svg>
                   <p id="receiptBarcodeText" class="font-mono-meta text-[8px] tracking-[0.32em] text-[#171513]/70 mt-1.5">
-                    19990913 20261211 2027
+                    19990913 20261212 2027
                   </p>
                   <p class="font-en-serif italic text-[11px] text-[#171513]/60 mt-2">
                     Keep this slip until the door opens.
@@ -671,7 +671,7 @@
         <!-- Release Countdown Card -->
         <div class="rounded-[2px] border border-cream-paper/15 bg-card-surface/80 backdrop-blur-sm px-5 py-8 text-center">
           <p class="font-mono-meta text-[9.5px] tracking-[0.3em] text-aged-gold/90 uppercase">
-            PRE-ORDER OPENS — 2026.12.11
+            PRE-ORDER OPENS — 2026.12.12
           </p>
 
           <!-- Countdown Digits -->
@@ -712,7 +712,7 @@
           </button>
 
           <p class="font-jp-serif text-[11px] tracking-[0.2em] text-muted-ash mt-4">
-            二〇二六年十二月十一日 公開予定
+            二〇二六年十二月十二日 公開予定
           </p>
         </div>
 
@@ -1484,7 +1484,7 @@
         receiptDateTimeEl.textContent = formatNowTimestamp();
         receiptFilmEl.textContent = INDIE_FILMS[fIdx];
         receiptQuoteEl.textContent = RECEIPT_QUOTES[qIdx];
-        receiptBarcodeTextEl.textContent = `19990913 ${randSerial} 20261211`;
+        receiptBarcodeTextEl.textContent = `19990913 ${randSerial} 20261212`;
 
         renderThermalBarcode(randSerial + receiptPrintCount * 913);
 
@@ -1507,7 +1507,7 @@
       /* ===========================================================
          7. LIVE COUNTDOWN TO 2026-12-11T00:00:00+08:00
          =========================================================== */
-      const RELEASE_TIMESTAMP = new Date('2026-12-11T00:00:00+08:00').getTime();
+      const RELEASE_TIMESTAMP = new Date('2026-12-12T20:00:00+08:00').getTime();
       const cdDays = document.getElementById('cdDays');
       const cdHours = document.getElementById('cdHours');
       const cdMinutes = document.getElementById('cdMinutes');
@@ -1551,8 +1551,8 @@
             'BEGIN:VEVENT',
             'UID:2027-yeonjun-calendar-collection@yeonepoch',
             'DTSTAMP:20261125T000000Z',
-            'DTSTART;VALUE=DATE:20261211',
-            'DTEND;VALUE=DATE:20261212',
+            'DTSTART:20261212T120000Z',
+            'DTEND:20261212T130000Z',
             'SUMMARY:2027 YEONJUN CALENDAR COLLECTION — 偶然と想像 (Online Release)',
             'DESCRIPTION:2027 YEONJUN CALENDAR COLLECTION (Wheel of Fortune and Fantasy / 偶然と想像) Pre-Order Opens. 日常の中に潜む、君という奇跡。',
             'BEGIN:VALARM',
@@ -1568,16 +1568,16 @@
           const url = URL.createObjectURL(blob);
           const link = document.createElement('a');
           link.href = url;
-          link.setAttribute('download', '2027_YEONJUN_Calendar_Release_1211.ics');
+          link.setAttribute('download', '2027_YEONJUN_Calendar_Release_1212.ics');
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);
           setTimeout(() => URL.revokeObjectURL(url), 1000);
 
           playPaperTick();
-          showToast('REMINDER SAVED — 2026.12.11 (.ICS)');
+          showToast('REMINDER SAVED — 2026.12.12 20:00 (.ICS)');
         } catch (err) {
-          showToast('RELEASE DATE: 2026.12.11');
+          showToast('RELEASE DATE: 2026.12.12 20:00');
         }
       }
 
